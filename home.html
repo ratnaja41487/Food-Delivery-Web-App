@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe Connect – Home</title>
+  <link rel="stylesheet" href="css/home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
+  </div>
+
+  <div class="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+  </div>
+</header>
+
+<!-- TITLE -->
+<h1 class="title">Welcome To Cafe Connect </h1>
+
+
+<!-- SEARCH BAR -->
+<div class="search-container">
+  <span class="search-icon"></span>
+  <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+
+  <div class="slides">
+
+    <div class="slide">
+      <img src="Assets/slide8.jpg" alt="slide1">
+    </div>
+
+    <div class="slide">
+      <img src="assets/slide1.png" alt="slide1 ">
+    </div>
+
+    <div class="slide">
+      <img src="assets/slide3.png" alt="slide3">
+    </div>
+
+    <div class="slide">
+      <img src="Assets/slide7.jpg" alt="slide3">
+    </div>
+
+  </div>
+
+  <!-- Arrows -->
+  <button class="prev" onclick="moveSlide(-1)">❮</button>
+  <button class="next" onclick="moveSlide(1)">❯</button>
+
+
+  <!-- Dots -->
+  <div class="dots">
+    <span onclick="currentSlide(1)"></span>
+    <span onclick="currentSlide(2)"></span>
+    <span onclick="currentSlide(3)"></span>
+    <span onclick="currentSlide(4)"></span>
+  </div>
+
+</div>
+
+<h2 class="title">Menu</h2>
+<!-- MENU -->
+<div class="menu">
+
+  <div class="menu-item">
+    <img src="assets/breakfast.jpg" alt="Breakfast">
+    <h3>Breakfast</h3>
+    <button onclick="window.location.href='breakfast.html'">View</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/lunch.jpg" alt="Lunch">
+    <h3>Lunch</h3>
+    <button onclick="window.location.href='lunch.html'">View</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/snacks.webp" alt="Snacks">
+    <h3>Snacks</h3>
+    <button onclick="window.location.href='snacks.html'">View</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/drinks.avif" alt="Drinks">
+    <h3>Drinks</h3>  
+    <button onclick="window.location.href='Drinks.html'">View</button>
+  </div>
+
+ <div class="menu-item">
+    <img src="Assets/salad1.jpg" alt="Salads">
+    <h3>Salads</h3>  
+    <button onclick="window.location.href='salads.html'">View</button>
+  </div>
+
+ <div class="menu-item">
+    <img src="assets/desserts.jpg" alt="Desserts">
+    <h3>Desserts</h3>  
+    <button onclick="window.location.href='dessert.html'">Order</button>
+  </div>
+
+</div>
+
+<!-- CART DROPDOWN -->
+<div class="cart-dropdown" id="cartDropdown">
+  <h4>Your Cart</h4>
+  <ul id="cartItems"></ul>
+</div>
+
+<script src="js/home.js"></script>
+</body>
+</html>
