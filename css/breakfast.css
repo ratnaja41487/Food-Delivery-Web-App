@@ -205,3 +205,7 @@ body {
   background: #ff5722;
 }
 
+.back-home-btn:hover {
+  background: #d67a5c; /* darker peach on hover */
+  transform: translateY(-2px);
+}

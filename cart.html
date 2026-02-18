@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cart - Cafe Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+<header class="header">
+  <h2>🛒 My Cart</h2>
+</header>
+
+<div class="cart-container" id="cartItems">
+  <!-- Items will load here -->
+</div>
+
+<div class="footer">
+  <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+  <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+</div>
+
+<script>
+function loadCart(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cartBox = document.getElementById("cartItems");
+
+  if(cart.length === 0){
+    cartBox.innerHTML = "<p class='empty'>Your cart is empty 😔</p>";
+    return;
+  }
+
+  // Convert ["Pizza","Burger","Pizza"] → {Pizza:2, Burger:1}
+  let countMap = {};
+  cart.forEach(item=>{
+    countMap[item] = (countMap[item] || 0) + 1;
+  });
+
+  let html = "";
+  for(let item in countMap){
+    html += `
+      <div class="cart-item">
+        <span class="item-name">${item}</span>
+        <div class="qty-box">
+          <button onclick="decreaseQty('${item}')">-</button>
+          <span>${countMap[item]}</span>
+          <button onclick="increaseQty('${item}')">+</button>
+        </div>
+      </div>
+    `;
+  }
+
+  cartBox.innerHTML = html;
+}
+
+function increaseQty(item){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(item);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function decreaseQty(item){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let index = cart.indexOf(item);
+  if(index > -1){
+    cart.splice(index,1);
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function clearCart(){
+  localStorage.removeItem("cart");
+  loadCart();
+}
+
+function goBack(){
+  window.location.href = "snacks.html";
+}
+
+window.onload = loadCart;
+</script>
+
+</body>
+</html>

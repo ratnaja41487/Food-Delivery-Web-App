@@ -2,16 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cafe Connect – Lunch Menu</title>
+  <title>Cafe Connect – Salads Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
+</head>
 
 <body>
 
@@ -26,7 +50,7 @@
   </div>
 </header>
 
-<h1 class="title">Lunch Menu</h1>
+<h1 class="title">Salads Menu</h1>
 
 <!-- SEARCH BAR -->
 <div class="search-container">
@@ -34,6 +58,7 @@
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
 </div>
 
+<!-- MENU -->
 <div class="menu">
 
   <div class="menu-item">
@@ -46,51 +71,45 @@
     <img src="assets/corn-salad.webp" alt="Corn Salad">
     <h3>Corn Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
   </div>
 
   <div class="menu-item">
     <img src="assets/Israeli-Salad.webp" alt="Israeli Salad">
     <h3>Israeli Salad</h3>
-   <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
+    <button onclick="window.location.href='salads.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/mixed-green-salad.jpg" alt="Mixed Green Salad">
     <h3>Mixed Green Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
   </div>
 
   <div class="menu-item">
     <img src="assets/Avocado-Fruit-Salad.jpg" alt="Avocado Salad">
     <h3>Avocado Salad</h3>
-   <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
+    <button onclick="window.location.href='salads.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Layered-Fruit-Salad.jpg" alt="Layered Fruit Salad">
     <h3>Layered Fruit Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/cucumber-salard.webp" alt="Cucumber Salad">
     <h3>Cucumber Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
-
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/Italian-Chopped-Salad.jpg" alt="Italian Salad">
     <h3>Italian Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/rice-salad.png" alt="Rice Salad">
     <h3>Rice Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
@@ -102,13 +121,13 @@
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/apple-fruit-salad.jpg" alt="Apple Salad">
     <h3>Apple Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/fruit-salad.webp" alt="Fruit Salad">
     <h3>Fruit Salad</h3>
     <button onclick="window.location.href='salads.html'">Add to Cart</button>
@@ -116,11 +135,8 @@
 
 </div>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>

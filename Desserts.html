@@ -2,16 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cafe Connect – Lunch Menu</title>
+  <title>Cafe Connect – Drinks Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
+</head>
 
 <body>
 
@@ -26,7 +50,7 @@
   </div>
 </header>
 
-<h1 class="title">Drinks Menu</h1>
+<h1 class="title">Desserts Menu</h1>
 
 <!-- SEARCH BAR -->
 <div class="search-container">
@@ -46,11 +70,9 @@
     <img src="Assets/cup-cake.webp" alt="Cup Cake">
     <h3>Cup Cake</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
-
   </div>
 
-
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/ice-cream-cake.jpeg" alt="Ice Cream">
     <h3>Ice Cream</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
@@ -59,7 +81,7 @@
   <div class="menu-item">
     <img src="assets/croissant.avif" alt="Croissant">
     <h3>Croissant</h3>
-   <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
+    <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
@@ -69,9 +91,9 @@
   </div>
 
   <div class="menu-item">
-    <img src="assets/Chocolate-Brownies.jpg" alt="Chocolate Browines">
-    <h3>Chocolate Browines</h3>
-   <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
+    <img src="assets/Chocolate-Brownies.jpg" alt="Chocolate Brownies">
+    <h3>Chocolate Brownies</h3>
+    <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
@@ -80,19 +102,19 @@
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/ice-cream.webp" alt="Ice Cream">
     <h3>Ice Cream</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/Donuts.jpg" alt="Donuts">
     <h3>Donuts</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/tiramisu.webp" alt="Tiramisu">
     <h3>Tiramisu</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
@@ -104,7 +126,7 @@
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/waffles.jpeg" alt="Waffles">
     <h3>Waffles</h3>
     <button onclick="window.location.href='Desserts.html'">Add to Cart</button>
@@ -112,11 +134,8 @@
 
 </div>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>

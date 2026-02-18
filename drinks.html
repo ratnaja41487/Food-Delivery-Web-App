@@ -2,16 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cafe Connect – Lunch Menu</title>
+  <title>Cafe Connect – Drinks Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
+</head>
 
 <body>
 
@@ -46,11 +70,9 @@
     <img src="Assets/thums-up.jpg" alt="Thums Up">
     <h3>Thums Up</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
-
   </div>
 
-
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/sprite.jpg" alt="Sprite">
     <h3>Sprite</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
@@ -59,7 +81,7 @@
   <div class="menu-item">
     <img src="assets/coffee.avif" alt="Coffee">
     <h3>Coffee</h3>
-   <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
@@ -71,7 +93,7 @@
   <div class="menu-item">
     <img src="assets/chai.png" alt="Chai">
     <h3>Chai</h3>
-   <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
@@ -80,31 +102,31 @@
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/coconut-water.webp" alt="Coconut Water">
     <h3>Coconut Water</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/grapes-juice.jpeg" alt="Grapes Juice">
     <h3>Grapes Juice</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
+  <div class="menu-item">
     <img src="assets/Watermelon-juice.webp" alt="Watermelon Juice">
     <h3>Watermelon Juice</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/Pomegranate-Juice.jpg" alt="Pomogranate Juice">
-    <h3>Pomogranate Juice</h3>
+    <img src="assets/Pomegranate-Juice.jpg" alt="Pomegranate Juice">
+    <h3>Pomegranate Juice</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
+  <div class="menu-item">
     <img src="assets/Banana-Juice.webp" alt="Banana Juice">
     <h3>Banana Juice</h3>
     <button onclick="window.location.href='drinks.html'">Add to Cart</button>
@@ -112,11 +134,8 @@
 
 </div>
 
-<script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-</script>
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>
