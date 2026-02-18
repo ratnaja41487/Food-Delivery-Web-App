@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    .back-home-btn {  
+    /* Back Button Style */
+    .back-home-btn {
       position: fixed;
       bottom: 40px;
       left: 30px;
@@ -33,14 +34,11 @@
       font-size: 20px;
     }
 
-    .add-btn{
-      background:#e29578;
-      color:#fff;
-      border:none;
-      padding:8px 16px;
-      border-radius:20px;
-      cursor:pointer;
-      font-weight:600;
+    /* Style for the price text */
+    .menu-item p {
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
     }
   </style>
 
@@ -49,34 +47,31 @@
       window.location.href = "home.html";
     }
 
-    function openCart() {
-      window.location.href = "cart.html";
-    }
-
-    // ADD ITEM TO CART
-    function addToCart(itemName) {
+    // Updated logic to save name and price for the cart page
+    function addToCart(itemName, itemPrice) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      cart.push(itemName); // add item
+      cart.push({ name: itemName, price: itemPrice });
       localStorage.setItem("cart", JSON.stringify(cart));
-
       document.getElementById("cartCount").innerText = cart.length;
-      alert(itemName + " added to cart 🛒");
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
     }
 
-    // LOAD CART COUNT
     window.onload = function () {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       document.getElementById("cartCount").innerText = cart.length;
     };
 
-    function searchFood(){
-      let input = document.getElementById("searchBar").value.toLowerCase();
-      let items = document.querySelectorAll(".menu-item");
-      items.forEach(item=>{
-        let name = item.querySelector("h3").innerText.toLowerCase();
-        item.style.display = name.includes(input) ? "block" : "none";
-      });
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+
+    function searchFood() {
+      let input = document.getElementById('searchBar').value.toLowerCase();
+      let items = document.getElementsByClassName('menu-item');
+      for (let i = 0; i < items.length; i++) {
+        let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        items[i].style.display = title.includes(input) ? "" : "none";
+      }
     }
   </script>
 </head>
@@ -97,81 +92,93 @@
 
 <div class="search-container">
   <span class="search-icon"></span>
-  <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
+  <input type="text" id="searchBar" placeholder="Search lunch..." onkeyup="searchFood()">
 </div>
 
 <div class="menu">
 
   <div class="menu-item">
-    <img src="assets/mutton-biryani.avif">
+    <img src="assets/mutton-biryani.avif" alt="Mutton Biryani">
     <h3>Mutton Biryani</h3>
-    <button class="add-btn" onclick="addToCart('Mutton Biryani')">Add to Cart</button>
+    <p>₹350</p>
+    <button onclick="addToCart('Mutton Biryani', 350)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/chicken-biryani.jpg">
+    <img src="assets/chicken-biryani.jpg" alt="Chicken Biryani">
     <h3>Chicken Biryani</h3>
-    <button class="add-btn" onclick="addToCart('Chicken Biryani')">Add to Cart</button>
+    <p>₹280</p>
+    <button onclick="addToCart('Chicken Biryani', 280)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/butternon.jpg">
+    <img src="assets/butternon.jpg" alt="Butter Naan">
     <h3>Butter Naan</h3>
-    <button class="add-btn" onclick="addToCart('Butter Naan')">Add to Cart</button>
+    <p>₹40</p>
+    <button onclick="addToCart('Butter Naan', 40)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/paneer-biryani.webp">
+    <img src="assets/paneer-biryani.webp" alt="Paneer Biryani">
     <h3>Paneer Biryani</h3>
-    <button class="add-btn" onclick="addToCart('Paneer Biryani')">Add to Cart</button>
+    <p>₹220</p>
+    <button onclick="addToCart('Paneer Biryani', 220)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/curd-rice.jpg">
+    <img src="assets/curd-rice.jpg" alt="Curd Rice">
     <h3>Curd Rice</h3>
-    <button class="add-btn" onclick="addToCart('Curd Rice')">Add to Cart</button>
+    <p>₹80</p>
+    <button onclick="addToCart('Curd Rice', 80)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/sambarrice.jpg">
+    <img src="assets/sambarrice.jpg" alt="Sambar Rice">
     <h3>Sambar Rice</h3>
-    <button class="add-btn" onclick="addToCart('Sambar Rice')">Add to Cart</button>
+    <p>₹90</p>
+    <button onclick="addToCart('Sambar Rice', 90)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/corianderrice.jpg">
+    <img src="assets/corianderrice.jpg" alt="Coriander Rice">
     <h3>Coriander Rice</h3>
-    <button class="add-btn" onclick="addToCart('Coriander Rice')">Add to Cart</button>
+    <p>₹100</p>
+    <button onclick="addToCart('Coriander Rice', 100)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/dalrice.webp">
+    <img src="assets/dalrice.webp" alt="Dal Rice">
     <h3>Dal Rice</h3>
-    <button class="add-btn" onclick="addToCart('Dal Rice')">Add to Cart</button>
+    <p>₹90</p>
+    <button onclick="addToCart('Dal Rice', 90)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/Chicken-65.jpg">
+    <img src="assets/Chicken-65.jpg" alt="Chicken 65">
     <h3>Chicken 65</h3>
-    <button class="add-btn" onclick="addToCart('Chicken 65')">Add to Cart</button>
+    <p>₹180</p>
+    <button onclick="addToCart('Chicken 65', 180)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/veg-fried-rice.jpg">
+    <img src="assets/veg-fried-rice.jpg" alt="Veg Fried Rice">
     <h3>Veg Fried Rice</h3>
-    <button class="add-btn" onclick="addToCart('Veg Fried Rice')">Add to Cart</button>
+    <p>₹150</p>
+    <button onclick="addToCart('Veg Fried Rice', 150)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/Chicken-Fried-Rice.jpg">
+    <img src="assets/Chicken-Fried-Rice.jpg" alt="Chicken Fried Rice">
     <h3>Chicken Fried Rice</h3>
-    <button class="add-btn" onclick="addToCart('Chicken Fried Rice')">Add to Cart</button>
+    <p>₹190</p>
+    <button onclick="addToCart('Chicken Fried Rice', 190)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/veg-soup.jpg">
+    <img src="assets/veg-soup.jpg" alt="Veg Soup">
     <h3>Veg Soup</h3>
-    <button class="add-btn" onclick="addToCart('Veg Soup')">Add to Cart</button>
+    <p>₹70</p>
+    <button onclick="addToCart('Veg Soup', 70)">Add to Cart</button>
   </div>
 
 </div>

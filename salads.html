@@ -33,6 +33,13 @@
       cursor: pointer;
       font-size: 20px;
     }
+
+    /* Style for the price text */
+    .menu-item p {
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
+    }
   </style>
 
   <script>
@@ -40,12 +47,13 @@
       window.location.href = "home.html";
     }
 
-    function addToCart(itemName) {
+    // Logic to save items and prices as objects in localStorage
+    function addToCart(itemName, itemPrice) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(itemName);
+      cart.push({ name: itemName, price: itemPrice });
       localStorage.setItem("cart", JSON.stringify(cart));
       document.getElementById("cartCount").innerText = cart.length;
-      alert(itemName + " added! Go to cart 🛒");
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
     }
 
     window.onload = function () {
@@ -89,7 +97,7 @@
 
 <div class="search-container">
   <span class="search-icon"></span>
-  <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
+  <input type="text" id="searchBar" placeholder="Search salads..." onkeyup="searchFood()">
 </div>
 
 <div class="menu">
@@ -97,73 +105,85 @@
   <div class="menu-item">
     <img src="assets/beet-salad.jpg" alt="Beet Root Salad">
     <h3>Beet Root Salad</h3>
-    <button onclick="addToCart('Beet Root Salad')">Add to Cart</button>
+    <p>₹120</p>
+    <button onclick="addToCart('Beet Root Salad', 120)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/corn-salad.webp" alt="Corn Salad">
     <h3>Corn Salad</h3>
-    <button onclick="addToCart('Corn Salad')">Add to Cart</button>
+    <p>₹100</p>
+    <button onclick="addToCart('Corn Salad', 100)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Israeli-Salad.webp" alt="Israeli Salad">
     <h3>Israeli Salad</h3>
-    <button onclick="addToCart('Israeli Salad')">Add to Cart</button>
+    <p>₹140</p>
+    <button onclick="addToCart('Israeli Salad', 140)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/mixed-green-salad.jpg" alt="Mixed Green Salad">
     <h3>Mixed Green Salad</h3>
-    <button onclick="addToCart('Mixed Green Salad')">Add to Cart</button>
+    <p>₹110</p>
+    <button onclick="addToCart('Mixed Green Salad', 110)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Avocado-Fruit-Salad.jpg" alt="Avocado Salad">
     <h3>Avocado Salad</h3>
-    <button onclick="addToCart('Avocado Salad')">Add to Cart</button>
+    <p>₹180</p>
+    <button onclick="addToCart('Avocado Salad', 180)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Layered-Fruit-Salad.jpg" alt="Layered Fruit Salad">
     <h3>Layered Fruit Salad</h3>
-    <button onclick="addToCart('Layered Fruit Salad')">Add to Cart</button>
+    <p>₹160</p>
+    <button onclick="addToCart('Layered Fruit Salad', 160)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/cucumber-salard.webp" alt="Cucumber Salad">
     <h3>Cucumber Salad</h3>
-    <button onclick="addToCart('Cucumber Salad')">Add to Cart</button>
+    <p>₹90</p>
+    <button onclick="addToCart('Cucumber Salad', 90)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Italian-Chopped-Salad.jpg" alt="Italian Salad">
     <h3>Italian Salad</h3>
-    <button onclick="addToCart('Italian Salad')">Add to Cart</button>
+    <p>₹150</p>
+    <button onclick="addToCart('Italian Salad', 150)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/rice-salad.png" alt="Rice Salad">
     <h3>Rice Salad</h3>
-    <button onclick="addToCart('Rice Salad')">Add to Cart</button>
+    <p>₹130</p>
+    <button onclick="addToCart('Rice Salad', 130)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Greek-Yogurt-salad.jpg" alt="Greek Yogurt Salad">
     <h3>Greek Yogurt Salad</h3>
-    <button onclick="addToCart('Greek Yogurt Salad')">Add to Cart</button>
+    <p>₹170</p>
+    <button onclick="addToCart('Greek Yogurt Salad', 170)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/apple-fruit-salad.jpg" alt="Apple Salad">
     <h3>Apple Salad</h3>
-    <button onclick="addToCart('Apple Salad')">Add to Cart</button>
+    <p>₹120</p>
+    <button onclick="addToCart('Apple Salad', 120)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/fruit-salad.webp" alt="Fruit Salad">
     <h3>Fruit Salad</h3>
-    <button onclick="addToCart('Fruit Salad')">Add to Cart</button>
+    <p>₹140</p>
+    <button onclick="addToCart('Fruit Salad', 140)">Add to Cart</button>
   </div>
 
 </div>
