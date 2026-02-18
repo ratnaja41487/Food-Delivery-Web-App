@@ -28,11 +28,33 @@
       background: #d67a5c;
       transform: translateY(-2px);
     }
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
   </style>
 
   <script>
     function goHome() {
       window.location.href = "home.html";
+    }
+
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " added! Go to cart 🛒");
+    }
+
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
     }
   </script>
 </head>
@@ -45,7 +67,7 @@
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
 
-  <div class="cart-icon">
+  <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
 </header>
@@ -63,73 +85,73 @@
   <div class="menu-item">
     <img src="assets/pepsi.jpg" alt="Pepsi">
     <h3>Pepsi</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Pepsi')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="Assets/thums-up.jpg" alt="Thums Up">
     <h3>Thums Up</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Thums Up')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/sprite.jpg" alt="Sprite">
     <h3>Sprite</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Sprite')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/coffee.avif" alt="Coffee">
     <h3>Coffee</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Coffee')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/lemon-tea.jpg" alt="Lemon Tea">
     <h3>Lemon Tea</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Lemon Tea')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/chai.png" alt="Chai">
     <h3>Chai</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Chai')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Mango-Juice.jpg" alt="Mango Juice">
     <h3>Mango Juice</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Mango Juice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/coconut-water.webp" alt="Coconut Water">
     <h3>Coconut Water</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Coconut Water')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/grapes-juice.jpeg" alt="Grapes Juice">
     <h3>Grapes Juice</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Grapes Juice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Watermelon-juice.webp" alt="Watermelon Juice">
     <h3>Watermelon Juice</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Watermelon Juice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Pomegranate-Juice.jpg" alt="Pomegranate Juice">
     <h3>Pomegranate Juice</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Pomegranate Juice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Banana-Juice.webp" alt="Banana Juice">
     <h3>Banana Juice</h3>
-    <button onclick="window.location.href='drinks.html'">Add to Cart</button>
+    <button onclick="addToCart('Banana Juice')">Add to Cart</button>
   </div>
 
 </div>

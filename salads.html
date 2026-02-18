@@ -28,114 +28,146 @@
       background: #d67a5c;
       transform: translateY(-2px);
     }
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
   </style>
 
   <script>
     function goHome() {
       window.location.href = "home.html";
     }
+
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " added! Go to cart 🛒");
+    }
+
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+
+    function searchFood() {
+      let input = document.getElementById('searchBar').value.toLowerCase();
+      let items = document.getElementsByClassName('menu-item');
+      
+      for (let i = 0; i < items.length; i++) {
+        let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+          items[i].style.display = "";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
   </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
 
-  <div class="cart-icon">
+  <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
 <h1 class="title">Salads Menu</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
 </div>
 
-<!-- MENU -->
 <div class="menu">
 
   <div class="menu-item">
     <img src="assets/beet-salad.jpg" alt="Beet Root Salad">
     <h3>Beet Root Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Beet Root Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/corn-salad.webp" alt="Corn Salad">
     <h3>Corn Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Corn Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Israeli-Salad.webp" alt="Israeli Salad">
     <h3>Israeli Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Israeli Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/mixed-green-salad.jpg" alt="Mixed Green Salad">
     <h3>Mixed Green Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Mixed Green Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Avocado-Fruit-Salad.jpg" alt="Avocado Salad">
     <h3>Avocado Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Avocado Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Layered-Fruit-Salad.jpg" alt="Layered Fruit Salad">
     <h3>Layered Fruit Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Layered Fruit Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/cucumber-salard.webp" alt="Cucumber Salad">
     <h3>Cucumber Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Cucumber Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Italian-Chopped-Salad.jpg" alt="Italian Salad">
     <h3>Italian Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Italian Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/rice-salad.png" alt="Rice Salad">
     <h3>Rice Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Rice Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Greek-Yogurt-salad.jpg" alt="Greek Yogurt Salad">
     <h3>Greek Yogurt Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Greek Yogurt Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/apple-fruit-salad.jpg" alt="Apple Salad">
     <h3>Apple Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Apple Salad')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/fruit-salad.webp" alt="Fruit Salad">
     <h3>Fruit Salad</h3>
-    <button onclick="window.location.href='salads.html'">Add to Cart</button>
+    <button onclick="addToCart('Fruit Salad')">Add to Cart</button>
   </div>
 
 </div>
 
-<!-- BACK BUTTON -->
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

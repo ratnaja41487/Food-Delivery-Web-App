@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cafe Connect – Home</title>
+  <title>Cafe Connect – Breakfast Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* Back Button Style */
     .back-home-btn {
       position: fixed;
       bottom: 40px;
@@ -28,32 +27,53 @@
       background: #d67a5c;
       transform: translateY(-2px);
     }
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
   </style>
 
   <script>
     function goHome() {
       window.location.href = "home.html";
     }
+
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " added to cart 🛒");
+    }
+
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
   </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
 
-  <div class="cart-icon" onclick="toggleCart()">
+  <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
-<!-- TITLE -->
-<h1 class="title">Welcome To Cafe Connect </h1>
+<h1 class="title">Welcome To Cafe Connect</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
@@ -61,126 +81,119 @@
 
 <h2 class="title">Breakfast Menu</h2>
 
-<!-- MENU -->
+<!-- MENU (UNCHANGED) -->
 <div class="menu">
 
   <div class="menu-item">
     <img src="assets/idly4.webp" alt="Idly">
     <h3>Idly</h3>
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <button onclick="addToCart('Idly')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/dosa3.jpg" alt="Dosa">
     <h3>Dosa</h3>
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <button onclick="addToCart('Dosa')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/upma.jpg" alt="Upma">
     <h3>Upma</h3>
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <button onclick="addToCart('Upma')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/poha1.png" alt="Poha">
-    <h3>Poha</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Poha</h3>
+    <button onclick="addToCart('Poha')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="Assets/vada.avif" alt="Vada">
-    <h3>Vada</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Vada</h3>
+    <button onclick="addToCart('Vada')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/bread-omelette.jpg" alt="Bread Omelette">
-    <h3>Bread Omelette</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Bread Omelette</h3>
+    <button onclick="addToCart('Bread Omelette')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/omelette.jpg" alt="Omelette">
-    <h3>Omelette</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Omelette</h3>
+    <button onclick="addToCart('Omelette')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/poori.png" alt="Poori">
-    <h3>Poori</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Poori</h3>
+    <button onclick="addToCart('Poori')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/aloo-paratha.webp" alt="Aloo Paratha">
-    <h3>Aloo Paratha</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Aloo Paratha</h3>
+    <button onclick="addToCart('Aloo Paratha')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Roti.webp" alt="Roti">
-    <h3>Roti</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Roti</h3>
+    <button onclick="addToCart('Roti')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/uttapam.jpg" alt="Uttapam">
-    <h3>Uttapam</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Uttapam</h3>
+    <button onclick="addToCart('Uttapam')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/pesarattu.jpg" alt="Pesarattu">
-    <h3>Pesarattu</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Pesarattu</h3>
+    <button onclick="addToCart('Pesarattu')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/mysore-bajji.jpg" alt="Mysore Bajji">
-    <h3>Mysore Bajji</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Mysore Bajji</h3>
+    <button onclick="addToCart('Mysore Bajji')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/mysore-dosa.jpg" alt="Mysore Dosa">
-    <h3>Mysore Dosa</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Mysore Dosa</h3>
+    <button onclick="addToCart('Mysore Dosa')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/appam.webp" alt="Appam">
-    <h3>Appam</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Appam</h3>
+    <button onclick="addToCart('Appam')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/cerals.jpg" alt="Cerals">
-    <h3>Cerals</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Cerals</h3>
+    <button onclick="addToCart('Cerals')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/bread1.jpg" alt="Bread">
-    <h3>Bread</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Bread</h3>
+    <button onclick="addToCart('Bread')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/oats.jpg" alt="Oats">
-    <h3>Oats</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
+    <h3>Oats</h3>
+    <button onclick="addToCart('Oats')">Add to Cart</button>
   </div>
 
 </div>
 
-<!-- CART DROPDOWN -->
-<div class="cart-dropdown" id="cartDropdown">
-  <h4>Your Cart</h4>
-  <ul id="cartItems"></ul>
-</div>
-
-<!-- BACK BUTTON -->
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

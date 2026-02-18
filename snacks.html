@@ -36,33 +36,68 @@
   </style>
 
   <script>
-    function goHome() {
-      window.location.href = "home.html";
+  function goHome() {
+    window.location.href = "home.html";
+  }
+
+  // Get cart as object {Pizza:2, Burger:1}
+  function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || {};
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    let cart = getCart();
+    let total = Object.values(cart).reduce((a, b) => a + b, 0);
+    document.getElementById("cartCount").innerText = total;
+  }
+
+  function addToCart(itemName, btn) {
+    let cart = getCart();
+    cart[itemName] = (cart[itemName] || 0) + 1;
+    saveCart(cart);
+    renderQty(btn, itemName);
+  }
+
+  function changeQty(itemName, delta, container) {
+    let cart = getCart();
+    cart[itemName] = (cart[itemName] || 0) + delta;
+
+    if (cart[itemName] <= 0) delete cart[itemName];
+
+    saveCart(cart);
+    renderQty(container.parentElement.querySelector("button"), itemName);
+  }
+
+  function renderQty(btn, itemName) {
+    let cart = getCart();
+    let qty = cart[itemName] || 0;
+    let parent = btn.parentElement;
+
+    if (qty > 0) {
+      parent.querySelector("button").outerHTML = `
+        <div class="qty-box">
+          <button onclick="changeQty('${itemName}', -1, this)">-</button>
+          <span>${qty}</span>
+          <button onclick="changeQty('${itemName}', 1, this)">+</button>
+        </div>
+      `;
     }
+  }
 
-    // Add item to cart
-    function addToCart(itemName) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  function openCart() {
+    window.location.href = "cart.html";
+  }
 
-      cart.push(itemName);
-      localStorage.setItem("cart", JSON.stringify(cart));
+  window.onload = function () {
+    updateCartCount();
+  };
+</script>
 
-      document.getElementById("cartCount").innerText = cart.length;
-
-      alert(itemName + " added! Go to cart 🛒");
-    }
-
-    // Load cart count when page loads
-    window.onload = function () {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      document.getElementById("cartCount").innerText = cart.length;
-    };
-
-    // Open cart page
-    function openCart() {
-      window.location.href = "cart.html";
-    }
-  </script>
 </head>
 
 <body>
