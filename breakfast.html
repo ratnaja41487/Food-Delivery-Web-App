@@ -5,7 +5,38 @@
   <title>Cafe Connect – Home</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
 </head>
+
 <body>
 
 <!-- HEADER -->
@@ -22,123 +53,121 @@
 <!-- TITLE -->
 <h1 class="title">Welcome To Cafe Connect </h1>
 
-
 <!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
 </div>
 
-
-
 <h2 class="title">Breakfast Menu</h2>
+
 <!-- MENU -->
 <div class="menu">
 
   <div class="menu-item">
-    <img src="assets/idly4.webp" alt="Breakfast">
+    <img src="assets/idly4.webp" alt="Idly">
     <h3>Idly</h3>
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/dosa3.jpg" alt="Lunch">
+    <img src="assets/dosa3.jpg" alt="Dosa">
     <h3>Dosa</h3>
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/upma.jpg" alt="Snacks">
+    <img src="assets/upma.jpg" alt="Upma">
     <h3>Upma</h3>
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/poha1.png" alt="Drinks">
+    <img src="assets/poha1.png" alt="Poha">
     <h3>Poha</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
-    <img src="Assets/vada.avif" alt="Salads">
+  <div class="menu-item">
+    <img src="Assets/vada.avif" alt="Vada">
     <h3>Vada</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/bread-omelette.jpg" alt="Desserts">
+    <img src="assets/bread-omelette.jpg" alt="Bread Omelette">
     <h3>Bread Omelette</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
-   <div class="menu-item">
-    <img src="assets/omelette.jpg" alt="Desserts">
+  <div class="menu-item">
+    <img src="assets/omelette.jpg" alt="Omelette">
     <h3>Omelette</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/poori.png" alt="Desserts">
+    <img src="assets/poori.png" alt="Poori">
     <h3>Poori</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/aloo-paratha.webp" alt="Desserts">
+    <img src="assets/aloo-paratha.webp" alt="Aloo Paratha">
     <h3>Aloo Paratha</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
-    <img src="assets/Roti.webp" alt="Desserts">
+  <div class="menu-item">
+    <img src="assets/Roti.webp" alt="Roti">
     <h3>Roti</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
-    <img src="assets/uttapam.jpg" alt="Desserts">
+  <div class="menu-item">
+    <img src="assets/uttapam.jpg" alt="Uttapam">
     <h3>Uttapam</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
-    <img src="assets/pesarattu.jpg" alt="Desserts">
+  <div class="menu-item">
+    <img src="assets/pesarattu.jpg" alt="Pesarattu">
     <h3>Pesarattu</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/mysore-bajji.jpg" alt="Desserts">
+    <img src="assets/mysore-bajji.jpg" alt="Mysore Bajji">
     <h3>Mysore Bajji</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/mysore-dosa.jpg" alt="Desserts">
+    <img src="assets/mysore-dosa.jpg" alt="Mysore Dosa">
     <h3>Mysore Dosa</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/appam.webp" alt="Desserts">
+    <img src="assets/appam.webp" alt="Appam">
     <h3>Appam</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/cerals.jpg" alt="Desserts">
+    <img src="assets/cerals.jpg" alt="Cerals">
     <h3>Cerals</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/bread1.jpg" alt="Desserts">
+    <img src="assets/bread1.jpg" alt="Bread">
     <h3>Bread</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/oats.jpg" alt="Desserts">
+    <img src="assets/oats.jpg" alt="Oats">
     <h3>Oats</h3>  
     <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
   </div>
@@ -150,6 +179,9 @@
   <h4>Your Cart</h4>
   <ul id="cartItems"></ul>
 </div>
+
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>
