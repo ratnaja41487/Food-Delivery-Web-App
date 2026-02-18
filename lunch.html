@@ -5,7 +5,38 @@
   <title>Cafe Connect – Lunch Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
 </head>
+
 <body>
 
 <!-- HEADER -->
@@ -30,84 +61,81 @@
 <div class="menu">
 
   <div class="menu-item">
-    <img src="assets/mutton-biryani.avif" alt="Meals">
+    <img src="assets/mutton-biryani.avif" alt="Mutton Biryani">
     <h3>Mutton Biryani</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/chicken-biryani.jpg" alt="Biryani">
+    <img src="assets/chicken-biryani.jpg" alt="Chicken Biryani">
     <h3>Chicken Biryani</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
   </div>
 
   <div class="menu-item">
-    <img src="assets/butternon.jpg" alt="Fried Rice">
-    <h3>Butternan</h3>
-   <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
+    <img src="assets/butternon.jpg" alt="Butter Naan">
+    <h3>Butter Naan</h3>
+    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/paneer-biryani.webp" alt="Noodles">
+    <img src="assets/paneer-biryani.webp" alt="Paneer Biryani">
     <h3>Paneer Biryani</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
   </div>
 
   <div class="menu-item">
     <img src="assets/curd-rice.jpg" alt="Curd Rice">
     <h3>Curd Rice</h3>
-   <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
+    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/sambarrice.jpg" alt="Paneer">
-    <h3>Samber Rice</h3>
+    <img src="assets/sambarrice.jpg" alt="Sambar Rice">
+    <h3>Sambar Rice</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
   </div>
 
-<div class="menu-item">
-    <img src="assets/corianderrice.jpg" alt="Paneer">
+  <div class="menu-item">
+    <img src="assets/corianderrice.jpg" alt="Coriander Rice">
     <h3>Coriander Rice</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
-
   </div>
 
-<div class="menu-item">
-    <img src="assets/dalrice.webp" alt="Paneer">
+  <div class="menu-item">
+    <img src="assets/dalrice.webp" alt="Dal Rice">
     <h3>Dal Rice</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
-<div class="menu-item">
-    <img src="assets/Chicken-65.jpg" alt="Paneer">
+  <div class="menu-item">
+    <img src="assets/Chicken-65.jpg" alt="Chicken 65">
     <h3>Chicken 65</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/veg-fried-rice.jpg" alt="Paneer">
+    <img src="assets/veg-fried-rice.jpg" alt="Veg Fried Rice">
     <h3>Veg Fried Rice</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
-    <img src="assets/Chicken-Fried-Rice.jpg" alt="Paneer">
+  <div class="menu-item">
+    <img src="assets/Chicken-Fried-Rice.jpg" alt="Chicken Fried Rice">
     <h3>Chicken Fried Rice</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
- <div class="menu-item">
-    <img src="assets/veg-soup.jpg" alt="Paneer">
+  <div class="menu-item">
+    <img src="assets/veg-soup.jpg" alt="Veg Soup">
     <h3>Veg Soup</h3>
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
 </div>
+
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>
