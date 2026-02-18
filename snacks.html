@@ -2,10 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cafe Connect – Lunch Menu</title>
+  <title>Cafe Connect – Snacks Menu</title>
   <link rel="stylesheet" href="css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #cd4210;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+
+    // Add item to cart
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      document.getElementById("cartCount").innerText = cart.length;
+
+      alert(itemName + " added! Go to cart 🛒");
+    }
+
+    // Load cart count when page loads
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    // Open cart page
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+  </script>
 </head>
+
 <body>
 
 <!-- HEADER -->
@@ -14,12 +73,12 @@
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
 
-  <div class="cart-icon">
+  <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
-<h1 class="title">Lunch Menu</h1>
+<h1 class="title">Snacks Menu</h1>
 
 <!-- SEARCH BAR -->
 <div class="search-container">
@@ -30,84 +89,81 @@
 <div class="menu">
 
   <div class="menu-item">
-    <img src="assets/pizza.jpg" alt="Meals">
+    <img src="assets/pizza.jpg" alt="Pizza">
     <h3>Pizza</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
+    <button onclick="addToCart('Pizza')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/burger.jpeg" alt="Biryani">
+    <img src="assets/burger.jpeg" alt="Burger">
     <h3>Burger</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
+    <button onclick="addToCart('Burger')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/puff.webp" alt="Fried Rice">
-    <h3>Puff</h3>
-   <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
+    <img src="assets/puff.webp" alt="Chicken Puff">
+    <h3>Chicken Puff</h3>
+    <button onclick="addToCart('Chicken Puff')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/egg-puff.webp" alt="Noodles">
+    <img src="assets/egg-puff.webp" alt="Egg Puff">
     <h3>Egg Puff</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
+    <button onclick="addToCart('Egg Puff')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/french-fries.jpg" alt="Curd Rice">
+    <img src="assets/french-fries.jpg" alt="French Fries">
     <h3>French Fries</h3>
-   <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
+    <button onclick="addToCart('French Fries')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/samosa1.webp" alt="Paneer">
-    <h3>Samber Rice</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
-  </div>
-
-<div class="menu-item">
-    <img src="assets/sandwich.jpg" alt="Paneer">
-    <h3>Coriander Rice</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-
-  </div>
-
-<div class="menu-item">
-    <img src="assets/chicken-nuggets.webp" alt="Paneer">
-    <h3>Dal Rice</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
-  </div>
-
-<div class="menu-item">
-    <img src="assets/Mirapakaya-Bajji.webp" alt="Paneer">
-    <h3>Chicken 65</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
+    <img src="assets/samosa1.webp" alt="Samosa">
+    <h3>Samosa</h3>
+    <button onclick="addToCart('Samosa')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/popcorn1.jpg" alt="Paneer">
-    <h3>Veg Fried Rice</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
+    <img src="assets/sandwich.jpg" alt="Sandwich">
+    <h3>Sandwich</h3>
+    <button onclick="addToCart('Sandwich')">Add to Cart</button>
   </div>
 
- <div class="menu-item">
-    <img src="assets/momos.webp" alt="Paneer">
-    <h3>Chicken Fried Rice</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
+  <div class="menu-item">
+    <img src="assets/chicken-nuggets.webp" alt="Chicken Nuggets">
+    <h3>Chicken Nuggets</h3>
+    <button onclick="addToCart('Chicken Nuggets')">Add to Cart</button>
   </div>
 
- <div class="menu-item">
-    <img src="assets/shawarma1.jpg" alt="Paneer">
-    <h3>Veg Soup</h3>
-    <button onclick="window.location.href='snacks.html'">Add to Cart</button>
+  <div class="menu-item">
+    <img src="assets/Mirapakaya-Bajji.webp" alt="Mirapakaya Bajji">
+    <h3>Mirapakaya Bajji</h3>
+    <button onclick="addToCart('Mirapakaya Bajji')">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/popcorn1.jpg" alt="Popcorn">
+    <h3>Popcorn</h3>
+    <button onclick="addToCart('Popcorn')">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/momos.webp" alt="Momos">
+    <h3>Momos</h3>
+    <button onclick="addToCart('Momos')">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/shawarma1.jpg" alt="Shawarma">
+    <h3>Shawarma</h3>
+    <button onclick="addToCart('Shawarma')">Add to Cart</button>
   </div>
 
 </div>
+
+<!-- BACK BUTTON -->
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
 </html>
