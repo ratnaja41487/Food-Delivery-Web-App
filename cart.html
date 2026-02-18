@@ -2,86 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Cart - Cafe Connect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="cart.css">
+  <title>My Cart - Cafe Connect</title>
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<header class="header">
-  <h2>🛒 My Cart</h2>
-</header>
+  <div class="cart-header">
+    <h2>My Cart</h2>
+    <i class="fa fa-times close-btn" onclick="window.location.href='index.html'"></i>
+  </div>
 
-<div class="cart-container" id="cartItems">
-  <!-- Items will load here -->
-</div>
+  <div class="container" id="mainContainer">
+    </div>
 
-<div class="footer">
-  <button class="back-btn" onclick="goBack()">← Back to Menu</button>
-  <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
-</div>
+  <div class="footer-bar" id="footerBar" style="display: none;">
+    <button class="proceed-btn">
+      <span id="btnTotal">₹0 TOTAL</span>
+      <span>Proceed <i class="fa fa-chevron-right"></i></span>
+    </button>
+  </div>
 
-<script>
-function loadCart(){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let cartBox = document.getElementById("cartItems");
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("mainContainer");
+      const footer = document.getElementById("footerBar");
+      
+      // 1. Check if Cart is Empty
+      if (cart.length === 0) {
+        footer.style.display = "none";
+        container.innerHTML = `
+          <div class="empty-cart-msg" style="text-align:center; padding:50px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/11329/11329073.png" style="width:150px; margin-bottom:20px; opacity:0.5;">
+            <h3>Your cart is empty</h3>
+            <p>Add some delicious snacks to get started!</p>
+            <button class="btn-back" onclick="window.location.href='index.html'" 
+                    style="background:#1c8d1c; color:white; border:none; padding:12px 25px; border-radius:8px; margin-top:15px; cursor:pointer;">
+              Add Items
+            </button>
+          </div>
+        `;
+        return;
+      }
 
-  if(cart.length === 0){
-    cartBox.innerHTML = "<p class='empty'>Your cart is empty 😔</p>";
-    return;
-  }
+      // 2. If Cart has items, show the UI
+      footer.style.display = "flex";
+      let itemTotal = 0;
 
-  // Convert ["Pizza","Burger","Pizza"] → {Pizza:2, Burger:1}
-  let countMap = {};
-  cart.forEach(item=>{
-    countMap[item] = (countMap[item] || 0) + 1;
-  });
+      let itemsHTML = cart.map((item, index) => {
+        // FIX: Ensure price and quantity are numbers. If missing, use 0.
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.quantity) || 0;
+        const name = item.name || "Unknown Item";
+        const image = item.image || 'assets/placeholder.jpg';
+        
+        const lineTotal = price * quantity;
+        itemTotal += lineTotal;
 
-  let html = "";
-  for(let item in countMap){
-    html += `
-      <div class="cart-item">
-        <span class="item-name">${item}</span>
-        <div class="qty-box">
-          <button onclick="decreaseQty('${item}')">-</button>
-          <span>${countMap[item]}</span>
-          <button onclick="increaseQty('${item}')">+</button>
+        return `
+          <div class="item-row">
+            <img src="${image}" class="item-img" onerror="this.src='assets/placeholder.jpg'">
+            <div class="item-details">
+              <div class="item-name">${name}</div>
+              <div class="item-price">₹${price}</div>
+            </div>
+            <div class="qty-control">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span class="qty-val">${quantity}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const handlingCharge = 2;
+      const grandTotal = itemTotal + handlingCharge;
+
+      container.innerHTML = `
+        <div class="delivery-card">
+          <div class="icon">⏱️</div>
+          <div class="text">
+            <strong>Delivery in 18 minutes</strong>
+            <span>Shipment of items</span>
+          </div>
         </div>
-      </div>
-    `;
-  }
 
-  cartBox.innerHTML = html;
-}
+        <div class="cart-items-container">
+          ${itemsHTML}
+        </div>
 
-function increaseQty(item){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(item);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  loadCart();
-}
+        <div class="bill-card">
+          <h3>Bill details</h3>
+          <div class="bill-row"><span>Item total</span> <span>₹${itemTotal}</span></div>
+          <div class="bill-row"><span>Delivery charge</span> <span style="color:blue">FREE</span></div>
+          <div class="bill-row"><span>Handling charge</span> <span>₹${handlingCharge}</span></div>
+          <div class="bill-row grand-total" style="border-top: 1px dashed #ddd; margin-top: 10px; padding-top: 10px; font-weight: bold;">
+            <span>Grand total</span> <span>₹${grandTotal}</span>
+          </div>
+        </div>
+      `;
 
-function decreaseQty(item){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let index = cart.indexOf(item);
-  if(index > -1){
-    cart.splice(index,1);
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  loadCart();
-}
+      document.getElementById("btnTotal").innerText = `₹${grandTotal} TOTAL`;
+    }
 
-function clearCart(){
-  localStorage.removeItem("cart");
-  loadCart();
-}
+    function changeQty(index, delta) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if(!cart[index]) return;
 
-function goBack(){
-  window.location.href = "snacks.html";
-}
+      cart[index].quantity = (parseInt(cart[index].quantity) || 0) + delta;
+      
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
 
-window.onload = loadCart;
-</script>
-
+    window.onload = renderCart;
+  </script>
 </body>
 </html>

@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* Back Button Style */
-    .back-home-btn {
+    .back-home-btn {  
       position: fixed;
       bottom: 40px;
       left: 30px;
@@ -33,6 +32,16 @@
       cursor: pointer;
       font-size: 20px;
     }
+
+    .add-btn{
+      background:#e29578;
+      color:#fff;
+      border:none;
+      padding:8px 16px;
+      border-radius:20px;
+      cursor:pointer;
+      font-weight:600;
+    }
   </style>
 
   <script>
@@ -40,28 +49,40 @@
       window.location.href = "home.html";
     }
 
-    function addToCart(itemName) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(itemName);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      document.getElementById("cartCount").innerText = cart.length;
-      alert(itemName + " added! Go to cart 🛒");
+    function openCart() {
+      window.location.href = "cart.html";
     }
 
+    // ADD ITEM TO CART
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push(itemName); // add item
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " added to cart 🛒");
+    }
+
+    // LOAD CART COUNT
     window.onload = function () {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       document.getElementById("cartCount").innerText = cart.length;
     };
 
-    function openCart() {
-      window.location.href = "cart.html";
+    function searchFood(){
+      let input = document.getElementById("searchBar").value.toLowerCase();
+      let items = document.querySelectorAll(".menu-item");
+      items.forEach(item=>{
+        let name = item.querySelector("h3").innerText.toLowerCase();
+        item.style.display = name.includes(input) ? "block" : "none";
+      });
     }
   </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
@@ -74,7 +95,6 @@
 
 <h1 class="title">Lunch Menu</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
@@ -83,80 +103,79 @@
 <div class="menu">
 
   <div class="menu-item">
-    <img src="assets/mutton-biryani.avif" alt="Mutton Biryani">
+    <img src="assets/mutton-biryani.avif">
     <h3>Mutton Biryani</h3>
-    <button onclick="addToCart('Mutton Biryani')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Mutton Biryani')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/chicken-biryani.jpg" alt="Chicken Biryani">
+    <img src="assets/chicken-biryani.jpg">
     <h3>Chicken Biryani</h3>
-    <button onclick="addToCart('Chicken Biryani')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Chicken Biryani')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/butternon.jpg" alt="Butter Naan">
+    <img src="assets/butternon.jpg">
     <h3>Butter Naan</h3>
-    <button onclick="addToCart('Butter Naan')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Butter Naan')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/paneer-biryani.webp" alt="Paneer Biryani">
+    <img src="assets/paneer-biryani.webp">
     <h3>Paneer Biryani</h3>
-    <button onclick="addToCart('Paneer Biryani')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Paneer Biryani')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/curd-rice.jpg" alt="Curd Rice">
+    <img src="assets/curd-rice.jpg">
     <h3>Curd Rice</h3>
-    <button onclick="addToCart('Curd Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Curd Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/sambarrice.jpg" alt="Sambar Rice">
+    <img src="assets/sambarrice.jpg">
     <h3>Sambar Rice</h3>
-    <button onclick="addToCart('Sambar Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Sambar Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/corianderrice.jpg" alt="Coriander Rice">
+    <img src="assets/corianderrice.jpg">
     <h3>Coriander Rice</h3>
-    <button onclick="addToCart('Coriander Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Coriander Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/dalrice.webp" alt="Dal Rice">
+    <img src="assets/dalrice.webp">
     <h3>Dal Rice</h3>
-    <button onclick="addToCart('Dal Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Dal Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/Chicken-65.jpg" alt="Chicken 65">
+    <img src="assets/Chicken-65.jpg">
     <h3>Chicken 65</h3>
-    <button onclick="addToCart('Chicken 65')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Chicken 65')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/veg-fried-rice.jpg" alt="Veg Fried Rice">
+    <img src="assets/veg-fried-rice.jpg">
     <h3>Veg Fried Rice</h3>
-    <button onclick="addToCart('Veg Fried Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Veg Fried Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/Chicken-Fried-Rice.jpg" alt="Chicken Fried Rice">
+    <img src="assets/Chicken-Fried-Rice.jpg">
     <h3>Chicken Fried Rice</h3>
-    <button onclick="addToCart('Chicken Fried Rice')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Chicken Fried Rice')">Add to Cart</button>
   </div>
 
   <div class="menu-item">
-    <img src="assets/veg-soup.jpg" alt="Veg Soup">
+    <img src="assets/veg-soup.jpg">
     <h3>Veg Soup</h3>
-    <button onclick="addToCart('Veg Soup')">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Veg Soup')">Add to Cart</button>
   </div>
 
 </div>
 
-<!-- BACK BUTTON -->
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

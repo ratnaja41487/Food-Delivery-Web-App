@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* Back Button Style */
     .back-home-btn {
       position: fixed;
       bottom: 40px;
@@ -36,73 +35,50 @@
   </style>
 
   <script>
-  function goHome() {
-    window.location.href = "home.html";
-  }
-
-  // Get cart as object {Pizza:2, Burger:1}
-  function getCart() {
-    return JSON.parse(localStorage.getItem("cart")) || {};
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-  }
-
-  function updateCartCount() {
-    let cart = getCart();
-    let total = Object.values(cart).reduce((a, b) => a + b, 0);
-    document.getElementById("cartCount").innerText = total;
-  }
-
-  function addToCart(itemName, btn) {
-    let cart = getCart();
-    cart[itemName] = (cart[itemName] || 0) + 1;
-    saveCart(cart);
-    renderQty(btn, itemName);
-  }
-
-  function changeQty(itemName, delta, container) {
-    let cart = getCart();
-    cart[itemName] = (cart[itemName] || 0) + delta;
-
-    if (cart[itemName] <= 0) delete cart[itemName];
-
-    saveCart(cart);
-    renderQty(container.parentElement.querySelector("button"), itemName);
-  }
-
-  function renderQty(btn, itemName) {
-    let cart = getCart();
-    let qty = cart[itemName] || 0;
-    let parent = btn.parentElement;
-
-    if (qty > 0) {
-      parent.querySelector("button").outerHTML = `
-        <div class="qty-box">
-          <button onclick="changeQty('${itemName}', -1, this)">-</button>
-          <span>${qty}</span>
-          <button onclick="changeQty('${itemName}', 1, this)">+</button>
-        </div>
-      `;
+    function goHome() {
+      window.location.href = "home.html";
     }
-  }
 
-  function openCart() {
-    window.location.href = "cart.html";
-  }
+    // Add item to cart (with quantity)
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  window.onload = function () {
-    updateCartCount();
-  };
-</script>
+      let existingItem = cart.find(item => item.name === itemName);
 
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name: itemName, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+
+      alert(itemName + " added! Go to cart 🛒");
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+      const cartCountEl = document.getElementById("cartCount");
+      if (cartCountEl) {
+        cartCountEl.innerText = total;
+      }
+    }
+
+    window.onload = function () {
+      updateCartCount();
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+  </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
@@ -115,7 +91,6 @@
 
 <h1 class="title">Snacks Menu</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
@@ -197,7 +172,6 @@
 
 </div>
 
-<!-- BACK BUTTON -->
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

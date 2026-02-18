@@ -1,110 +1,215 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Segoe UI", Arial, sans-serif;
+/* --- Root Variables for Branding --- */
+:root {
+  --primary-green: #1c8d1c;
+  --bg-gray: #f1f4f7;
+  --text-dark: #222;
+  --text-muted: #666;
+  --white: #ffffff;
 }
 
-body{
-  background:#f6f6f6;
+/* --- Base Styles --- */
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-gray);
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
 }
 
-/* HEADER */
-.header{
-  background:#cd4210;
-  color:white;
-  padding:18px;
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
+/* --- Header --- */
+.cart-header {
+  background: var(--white);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* CART CONTAINER */
-.cart-container{
-  max-width:600px;
-  margin:30px auto;
-  background:white;
-  border-radius:14px;
-  padding:20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+.cart-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
-/* ITEM */
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 0;
-  border-bottom:1px solid #eee;
+.close-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-dark);
 }
 
-.item-name{
-  font-size:18px;
-  font-weight:600;
-  color:#333;
+/* --- Content Container --- */
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  padding-bottom: 100px; /* Space for fixed bottom button */
 }
 
-/* QUANTITY BOX */
-.qty-box{
-  display:flex;
-  align-items:center;
-  gap:10px;
+/* --- Delivery Info Card --- */
+.delivery-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
 }
 
-.qty-box button{
-  width:32px;
-  height:32px;
-  border:none;
-  border-radius:6px;
-  background:#16a34a;
-  color:white;
-  font-size:18px;
-  cursor:pointer;
+.delivery-card .icon {
+  font-size: 24px;
 }
 
-.qty-box button:first-child{
-  background:#ef4444;
+.delivery-card .text strong {
+  display: block;
+  font-size: 0.95rem;
 }
 
-.qty-box span{
-  font-size:18px;
-  font-weight:bold;
+.delivery-card .text span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
-/* FOOTER */
-.footer{
-  max-width:600px;
-  margin:10px auto 40px;
-  display:flex;
-  justify-content:space-between;
+/* --- Item List Section --- */
+.cart-items-container {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 
-.back-btn{
-  background:#16a34a;
-  color:white;
-  border:none;
-  padding:12px 22px;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
+.item-row {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.clear-btn{
-  background:#ef4444;
-  color:white;
-  border:none;
-  padding:12px 22px;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
+.item-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 15px;
+  background: #f9f9f9;
 }
 
-.back-btn:hover{ background:#15803d; }
-.clear-btn:hover{ background:#dc2626; }
+.item-details {
+  flex: 1;
+}
 
-.empty{
-  text-align:center;
-  font-size:18px;
-  color:#777;
-  padding:30px 0;
+.item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* --- Quantity Toggle Button --- */
+.qty-control {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-green);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 2px;
+  min-width: 80px;
+  justify-content: space-between;
+}
+
+.qty-control button {
+  background: none;
+  border: none;
+  color: var(--white);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.qty-val {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* --- Bill Summary Card --- */
+.bill-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.bill-card h3 {
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.bill-row.grand-total {
+  border-top: 1px dashed #ddd;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-weight: 800;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+/* --- Bottom Fixed Bar --- */
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  padding: 12px 15px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+}
+
+.proceed-btn {
+  background: var(--primary-green);
+  color: var(--white);
+  border: none;
+  width: 100%;
+  max-width: 470px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s active;
+}
+
+.proceed-btn:active {
+  transform: scale(0.98);
+}
+
+.proceed-btn i {
+  font-size: 0.8rem;
+}
+
+/* --- Empty Cart State --- */
+.empty-cart-msg {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--text-muted);
 }
