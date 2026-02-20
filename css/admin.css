@@ -1,0 +1,144 @@
+/* ADMIN PAGE SPECIFIC STYLES */
+/* --- PREVENTS ADMIN AND CART OVERLAP --- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 35px; /* Creates professional distance between icons */
+  margin-left: auto;
+}
+
+/* This overrides your old absolute positioning for the cart */
+.header-actions .cart-icon {
+  position: relative !important; 
+  right: auto !important;
+  top: auto !important;
+}
+
+.admin-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+}
+
+.admin-text {
+  font-size: 11px;
+  font-weight: 900; /* Bold as requested */
+  margin-top: 2px;
+}
+
+.shield-icon {
+  font-size: 24px;
+}
+
+
+
+.admin-body {
+    padding: 40px;
+    background: linear-gradient(to right, #fff7f0, #ffe5d9); /* Matches your home body */
+    min-height: 100vh;
+}
+
+/* Back Button Styling */
+.back-btn {
+    text-decoration: none;
+    color: #ff7f50;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 8px 15px;
+    border: 2px solid #ff7f50;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #ff7f50;
+    color: white;
+}
+
+/* Table Container */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+/* Table Header */
+.order-table th {
+    background: #ff7f50; /* Your brand orange */
+    color: white;
+    padding: 18px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Table Cells */
+.order-table td {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    color: #333;
+}
+
+/* Row Hover Effect */
+.order-table tbody tr:hover {
+    background-color: #fffaf8;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: #fff4e6;
+    color: #d35400;
+    border: 1px solid #ffe8cc;
+}
+
+/* Action Button */
+.btn-complete {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-complete:hover {
+    background: #219150;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+/* Empty State Styling */
+#adminOrderList:empty::after {
+    content: "No orders currently pending.";
+    display: block;
+    padding: 20px;
+    color: #888;
+    font-style: italic;
+}

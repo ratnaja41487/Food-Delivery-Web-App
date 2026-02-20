@@ -18,6 +18,8 @@ body {
   padding: 10px 30px;
 }
 
+
+
 .logo img {
   width: 100px;
   height: 100px;
@@ -233,4 +235,55 @@ body {
 
 .dots span.active {
   background: #ff5722;
+}
+
+
+/* --- NEW ADMIN & SPACING FIX --- */
+
+/* This overrides the absolute positioning so icons can sit side-by-side */
+/* --- Space & Alignment Fix --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+/* This container forces the 30px gap between Admin and Cart */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    margin-left: auto;
+}
+
+/* Resetting absolute positioning from your current cart style */
+.header-actions .cart-icon {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+}
+
+.admin-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+.admin-text {
+    font-size: 10px;
+    font-weight: 900; /* Professional Bold Look */
+    margin-top: 2px;
+}
+
+.admin-link:hover {
+    transform: scale(1.1);
+}
+
+
+
+.shield-emoji {
+    font-size: 22px;
 }

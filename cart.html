@@ -3,125 +3,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Cart - Cafe Connect</title>
-  <link rel="stylesheet" href="css/cart.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Cafe Connect – Professional Cart</title>
+  <style>
+    /* --- PROFESSIONAL CSS --- */
+    :root {
+      --primary-color: #cd4210;
+      --bg-gradient: linear-gradient(135deg, #fdf2e9 0%, #fce4ec 100%);
+      --card-bg: #ffffff;
+      --text-main: #2d2d2d;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centers everything horizontally */
+      justify-content: center; /* Centers everything vertically */
+      color: var(--text-main);
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cart-container {
+      width: 90%;
+      max-width: 500px;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      text-align: center; /* Centers text inside the card */
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #f8f8f8;
+    }
+
+    .item-info {
+      text-align: left;
+    }
+
+    .item-name {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    /* Quantity Controls Styled Boldly */
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f1f1f1;
+      padding: 5px 15px;
+      border-radius: 50px;
+    }
+
+    .qty-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary-color);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .qty-btn:hover { transform: scale(1.3); }
+
+    .qty-num {
+      font-weight: 800;
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    .item-price {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #000;
+    }
+
+    .total-section {
+      margin-top: 30px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary-color);
+      border-top: 3px solid #f1f1f1;
+      padding-top: 20px;
+    }
+
+    .btn-area {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .clear-btn {
+      flex: 1;
+      background: #eee;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .clear-btn:hover { background: #ddd; }
+
+    .order-btn {
+      flex: 2;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(205, 66, 16, 0.3);
+      transition: 0.3s;
+    }
+
+    .order-btn:hover {
+      background: #b33a0e;
+      transform: translateY(-3px);
+    }
+
+    /* Back Button */
+    .back-nav {
+      margin-top: 30px;
+    }
+
+    .back-menu-btn {
+      background: white;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-menu-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .empty-msg {
+      padding: 40px;
+      font-weight: bold;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="cart-header">
-    <h2>My Cart</h2>
-    <i class="fa fa-times close-btn" onclick="window.location.href='index.html'"></i>
-  </div>
+  <h1 class="title">Your Order</h1>
 
-  <div class="container" id="mainContainer">
+  <div class="cart-container">
+    <div id="cartList">
+      </div>
+
+    <div class="total-section">
+      Total: ₹<span id="grandTotal">0</span>
     </div>
 
-  <div class="footer-bar" id="footerBar" style="display: none;">
-    <button class="proceed-btn">
-      <span id="btnTotal">₹0 TOTAL</span>
-      <span>Proceed <i class="fa fa-chevron-right"></i></span>
+    <div class="btn-area">
+      <button class="clear-btn" onclick="clearCart()">Clear</button>
+      <button class="order-btn" onclick="placeOrder()">Place Order Now</button>
+    </div>
+  </div>
+
+  <div class="back-nav">
+    <button class="back-menu-btn" onclick="window.location.href='home.html'">
+      ← Back to Menu
     </button>
   </div>
 
   <script>
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const container = document.getElementById("mainContainer");
-      const footer = document.getElementById("footerBar");
-      
-      // 1. Check if Cart is Empty
+    function displayCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let cartList = document.getElementById("cartList");
+      let total = 0;
+
       if (cart.length === 0) {
-        footer.style.display = "none";
-        container.innerHTML = `
-          <div class="empty-cart-msg" style="text-align:center; padding:50px;">
-            <img src="https://cdn-icons-png.flaticon.com/512/11329/11329073.png" style="width:150px; margin-bottom:20px; opacity:0.5;">
-            <h3>Your cart is empty</h3>
-            <p>Add some delicious snacks to get started!</p>
-            <button class="btn-back" onclick="window.location.href='index.html'" 
-                    style="background:#1c8d1c; color:white; border:none; padding:12px 25px; border-radius:8px; margin-top:15px; cursor:pointer;">
-              Add Items
-            </button>
-          </div>
-        `;
+        cartList.innerHTML = "<div class='empty-msg'>Your cart is hungry! 🍔</div>";
+        document.getElementById("grandTotal").innerText = "0";
         return;
       }
 
-      // 2. If Cart has items, show the UI
-      footer.style.display = "flex";
-      let itemTotal = 0;
+      // Grouping items to avoid repetition
+      let grouped = {};
+      cart.forEach(item => {
+        if (grouped[item.name]) {
+          grouped[item.name].qty += 1;
+        } else {
+          grouped[item.name] = { ...item, qty: 1 };
+        }
+      });
 
-      let itemsHTML = cart.map((item, index) => {
-        // FIX: Ensure price and quantity are numbers. If missing, use 0.
-        const price = parseFloat(item.price) || 0;
-        const quantity = parseInt(item.quantity) || 0;
-        const name = item.name || "Unknown Item";
-        const image = item.image || 'assets/placeholder.jpg';
-        
-        const lineTotal = price * quantity;
-        itemTotal += lineTotal;
+      cartList.innerHTML = "";
+      Object.values(grouped).forEach(item => {
+        let cost = item.price * item.qty;
+        total += cost;
 
-        return `
-          <div class="item-row">
-            <img src="${image}" class="item-img" onerror="this.src='assets/placeholder.jpg'">
-            <div class="item-details">
-              <div class="item-name">${name}</div>
-              <div class="item-price">₹${price}</div>
+        cartList.innerHTML += `
+          <div class="cart-item">
+            <div class="item-info">
+              <span class="item-name">${item.name}</span>
+              <div class="qty-controls">
+                <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
+                <span class="qty-num">${item.qty}</span>
+                <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+              </div>
             </div>
-            <div class="qty-control">
-              <button onclick="changeQty(${index}, -1)">-</button>
-              <span class="qty-val">${quantity}</span>
-              <button onclick="changeQty(${index}, 1)">+</button>
-            </div>
+            <span class="item-price">₹${cost}</span>
           </div>
         `;
-      }).join('');
+      });
 
-      const handlingCharge = 2;
-      const grandTotal = itemTotal + handlingCharge;
-
-      container.innerHTML = `
-        <div class="delivery-card">
-          <div class="icon">⏱️</div>
-          <div class="text">
-            <strong>Delivery in 18 minutes</strong>
-            <span>Shipment of items</span>
-          </div>
-        </div>
-
-        <div class="cart-items-container">
-          ${itemsHTML}
-        </div>
-
-        <div class="bill-card">
-          <h3>Bill details</h3>
-          <div class="bill-row"><span>Item total</span> <span>₹${itemTotal}</span></div>
-          <div class="bill-row"><span>Delivery charge</span> <span style="color:blue">FREE</span></div>
-          <div class="bill-row"><span>Handling charge</span> <span>₹${handlingCharge}</span></div>
-          <div class="bill-row grand-total" style="border-top: 1px dashed #ddd; margin-top: 10px; padding-top: 10px; font-weight: bold;">
-            <span>Grand total</span> <span>₹${grandTotal}</span>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("btnTotal").innerText = `₹${grandTotal} TOTAL`;
+      document.getElementById("grandTotal").innerText = total;
     }
 
-    function changeQty(index, delta) {
+    function updateQty(name, change) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      if(!cart[index]) return;
-
-      cart[index].quantity = (parseInt(cart[index].quantity) || 0) + delta;
-      
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
+      if (change === 1) {
+        let item = cart.find(i => i.name === name);
+        cart.push({...item});
+      } else {
+        let index = cart.map(i => i.name).lastIndexOf(name);
+        if (index > -1) cart.splice(index, 1);
       }
-      
       localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
+      displayCart();
     }
 
-    window.onload = renderCart;
+    function clearCart() {
+      if(confirm("Empty your cart?")) {
+        localStorage.removeItem("cart");
+        displayCart();
+      }
+    }
+
+    function placeOrder() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if(cart.length === 0) return alert("Add items first!");
+      alert("Success! Your treats are on the way. 🎉");
+      localStorage.removeItem("cart");
+      window.location.href = "home.html";
+    }
+
+    window.onload = displayCart;
   </script>
 </body>
 </html>
+
+
+
+
