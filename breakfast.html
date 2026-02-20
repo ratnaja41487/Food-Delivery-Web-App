@@ -7,10 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-<<<<<<< HEAD
     /* Back Button Style */
-=======
->>>>>>> Ratnaja
     .back-home-btn {
       position: fixed;
       bottom: 40px;
@@ -31,8 +28,6 @@
       background: #d67a5c;
       transform: translateY(-2px);
     }
-<<<<<<< HEAD
-=======
 
     .cart-icon {
       cursor: pointer;
@@ -45,23 +40,20 @@
       color: #333;
       margin: 5px 0;
     }
->>>>>>> Ratnaja
   </style>
 
   <script>
     function goHome() {
       window.location.href = "home.html";
     }
-<<<<<<< HEAD
-=======
 
-    // Updated to save Price as well
+    // Logic to save items and prices to localStorage
     function addToCart(itemName, itemPrice) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       cart.push({ name: itemName, price: itemPrice });
       localStorage.setItem("cart", JSON.stringify(cart));
       document.getElementById("cartCount").innerText = cart.length;
-      alert(itemName + " (₹" + itemPrice + ") added to cart! 🛒");
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
     }
 
     window.onload = function () {
@@ -81,7 +73,6 @@
         items[i].style.display = title.includes(input) ? "" : "none";
       }
     }
->>>>>>> Ratnaja
   </script>
 </head>
 
@@ -91,6 +82,7 @@
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
+
   <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
@@ -98,20 +90,10 @@
 
 <h1 class="title">Breakfast Menu</h1>
 
-<<<<<<< HEAD
-<!-- SEARCH BAR -->
-=======
->>>>>>> Ratnaja
 <div class="search-container">
   <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
 </div>
 
-<<<<<<< HEAD
-<h2 class="title">Breakfast Menu</h2>
-
-<!-- MENU -->
-=======
->>>>>>> Ratnaja
 <div class="menu">
   <div class="menu-item">
     <img src="assets/idly4.webp" alt="Idly">
@@ -136,94 +118,6 @@
 
   <div class="menu-item">
     <img src="assets/poha1.png" alt="Poha">
-<<<<<<< HEAD
-    <h3>Poha</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="Assets/vada.avif" alt="Vada">
-    <h3>Vada</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/bread-omelette.jpg" alt="Bread Omelette">
-    <h3>Bread Omelette</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/omelette.jpg" alt="Omelette">
-    <h3>Omelette</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/poori.png" alt="Poori">
-    <h3>Poori</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/aloo-paratha.webp" alt="Aloo Paratha">
-    <h3>Aloo Paratha</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/Roti.webp" alt="Roti">
-    <h3>Roti</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/uttapam.jpg" alt="Uttapam">
-    <h3>Uttapam</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/pesarattu.jpg" alt="Pesarattu">
-    <h3>Pesarattu</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/mysore-bajji.jpg" alt="Mysore Bajji">
-    <h3>Mysore Bajji</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/mysore-dosa.jpg" alt="Mysore Dosa">
-    <h3>Mysore Dosa</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/appam.webp" alt="Appam">
-    <h3>Appam</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/cerals.jpg" alt="Cerals">
-    <h3>Cerals</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/bread1.jpg" alt="Bread">
-    <h3>Bread</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-  </div>
-
-  <div class="menu-item">
-    <img src="assets/oats.jpg" alt="Oats">
-    <h3>Oats</h3>  
-    <button onclick="window.location.href='breakfast.html'">Add to Cart</button>
-=======
     <h3>Poha</h3>
     <p>₹50</p>
     <button onclick="addToCart('Poha', 50)">Add to Cart</button>
@@ -290,7 +184,6 @@
     <h3>Mysore Bajji</h3>
     <p>₹90</p>
     <button onclick="addToCart('Mysore Bajji', 90)">Add to Cart</button>
->>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
@@ -329,9 +222,6 @@
   </div>
 </div>
 
-<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
-
-<!-- BACK BUTTON -->
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>
