@@ -33,6 +33,16 @@
       cursor: pointer;
       font-size: 20px;
     }
+<<<<<<< HEAD
+=======
+
+    /* Style for the price text */
+    .menu-item p {
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
+    }
+>>>>>>> Ratnaja
   </style>
 
   <script>
@@ -40,6 +50,7 @@
       window.location.href = "home.html";
     }
 
+<<<<<<< HEAD
     // Add item to cart
     function addToCart(itemName) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -62,12 +73,50 @@
     function openCart() {
       window.location.href = "cart.html";
     }
+=======
+    // Logic to save name and price to localStorage
+    function addToCart(itemName, itemPrice) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+      // Store as object with name and price
+      cart.push({ name: itemName, price: itemPrice });
+      
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartCountEl = document.getElementById("cartCount");
+      if (cartCountEl) {
+        cartCountEl.innerText = cart.length;
+      }
+    }
+
+    window.onload = function () {
+      updateCartCount();
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+
+    function searchFood() {
+      let input = document.getElementById('searchBar').value.toLowerCase();
+      let items = document.getElementsByClassName('menu-item');
+      for (let i = 0; i < items.length; i++) {
+        let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        items[i].style.display = title.includes(input) ? "" : "none";
+      }
+    }
+>>>>>>> Ratnaja
   </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
@@ -80,10 +129,9 @@
 
 <h1 class="title">Snacks Menu</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
-  <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
+  <input type="text" id="searchBar" placeholder="Search snacks..." onkeyup="searchFood()">
 </div>
 
 <div class="menu">
@@ -91,78 +139,141 @@
   <div class="menu-item">
     <img src="assets/pizza.jpg" alt="Pizza">
     <h3>Pizza</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Pizza')">Add to Cart</button>
+=======
+    <p>₹199</p>
+    <button onclick="addToCart('Pizza', 199)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/burger.jpeg" alt="Burger">
     <h3>Burger</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Burger')">Add to Cart</button>
+=======
+    <p>₹120</p>
+    <button onclick="addToCart('Burger', 120)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/puff.webp" alt="Chicken Puff">
     <h3>Chicken Puff</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Chicken Puff')">Add to Cart</button>
+=======
+    <p>₹45</p>
+    <button onclick="addToCart('Chicken Puff', 45)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/egg-puff.webp" alt="Egg Puff">
     <h3>Egg Puff</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Egg Puff')">Add to Cart</button>
+=======
+    <p>₹35</p>
+    <button onclick="addToCart('Egg Puff', 35)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/french-fries.jpg" alt="French Fries">
     <h3>French Fries</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('French Fries')">Add to Cart</button>
+=======
+    <p>₹90</p>
+    <button onclick="addToCart('French Fries', 90)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/samosa1.webp" alt="Samosa">
     <h3>Samosa</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Samosa')">Add to Cart</button>
+=======
+    <p>₹20</p>
+    <button onclick="addToCart('Samosa', 20)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/sandwich.jpg" alt="Sandwich">
     <h3>Sandwich</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Sandwich')">Add to Cart</button>
+=======
+    <p>₹80</p>
+    <button onclick="addToCart('Sandwich', 80)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/chicken-nuggets.webp" alt="Chicken Nuggets">
     <h3>Chicken Nuggets</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Chicken Nuggets')">Add to Cart</button>
+=======
+    <p>₹150</p>
+    <button onclick="addToCart('Chicken Nuggets', 150)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/Mirapakaya-Bajji.webp" alt="Mirapakaya Bajji">
     <h3>Mirapakaya Bajji</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Mirapakaya Bajji')">Add to Cart</button>
+=======
+    <p>₹50</p>
+    <button onclick="addToCart('Mirapakaya Bajji', 50)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/popcorn1.jpg" alt="Popcorn">
     <h3>Popcorn</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Popcorn')">Add to Cart</button>
+=======
+    <p>₹60</p>
+    <button onclick="addToCart('Popcorn', 60)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/momos.webp" alt="Momos">
     <h3>Momos</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Momos')">Add to Cart</button>
+=======
+    <p>₹110</p>
+    <button onclick="addToCart('Momos', 110)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/shawarma1.jpg" alt="Shawarma">
     <h3>Shawarma</h3>
+<<<<<<< HEAD
     <button onclick="addToCart('Shawarma')">Add to Cart</button>
+=======
+    <p>₹130</p>
+    <button onclick="addToCart('Shawarma', 130)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
 </div>
 
+<<<<<<< HEAD
 <!-- BACK BUTTON -->
+=======
+>>>>>>> Ratnaja
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

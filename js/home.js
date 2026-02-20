@@ -7,15 +7,17 @@ const dots = document.querySelectorAll(".dots span");
 const totalSlides = slides.length;
 
 function showSlide(index) {
-
   if (index >= totalSlides) slideIndex = 0;
   if (index < 0) slideIndex = totalSlides - 1;
 
-  slidesContainer.style.transform =
-    `translateX(-${slideIndex * 100}%)`;
+  if (slidesContainer) {
+    slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }
 
   dots.forEach(dot => dot.classList.remove("active"));
-  dots[slideIndex].classList.add("active");
+  if (dots[slideIndex]) {
+    dots[slideIndex].classList.add("active");
+  }
 }
 
 function moveSlide(n) {
@@ -34,9 +36,26 @@ setInterval(() => {
   showSlide(slideIndex);
 }, 4000);
 
+// Initialize slider
 showSlide(slideIndex);
 
+/* --- CART FUNCTIONS --- */
 
+// This function fixes the issue where the cart wouldn't open from home
+function openCart() {
+  window.location.href = "cart.html";
+}
+
+// Updates the cart number icon on the home page
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountEl = document.getElementById("cartCount");
+  if (cartCountEl) {
+    cartCountEl.innerText = cart.length;
+  }
+}
+
+/* --- SEARCH FUNCTION --- */
 function searchFood() {
   let input = document.getElementById("searchBar").value.toLowerCase();
   let items = document.querySelectorAll(".menu-item");
@@ -45,9 +64,14 @@ function searchFood() {
     let foodName = item.querySelector("h3").innerText.toLowerCase();
 
     if (foodName.includes(input)) {
-      item.style.display = "block";   // show matched item
+      item.style.display = "block"; // show matched item
     } else {
-      item.style.display = "none";    // hide unmatched item
+      item.style.display = "none"; // hide unmatched item
     }
   });
 }
+
+// When the home page loads, update the cart count immediately
+window.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+});

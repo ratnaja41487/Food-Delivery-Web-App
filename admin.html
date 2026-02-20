@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe Connect - Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="admin-body">
+
+  <header class="admin-header">
+    <a href="home.html" class="back-btn">← Back to Menu</a>
+    <h1 class="admin-title">Order Dashboard</h1>
+  </header>
+
+  <main class="admin-container">
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Items</th>
+          <th>Total Price</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="adminOrderList">
+        </tbody>
+    </table>
+  </main>
+
+  <script>
+    function loadAdminOrders() {
+        const orderList = document.getElementById('adminOrderList');
+        
+        // 1. Get the actual cart data that you saved in your home/cart page
+        // We assume your cart is saved under the name 'cart' in localStorage
+        const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        if (savedCart.length === 0) {
+            orderList.innerHTML = "<tr><td colspan='5' style='text-align:center;'>No active orders in cart</td></tr>";
+            return;
+        }
+
+        // 2. Format the items into a single string
+        const itemNames = savedCart.map(item => item.name).join(", ");
+        
+        // 3. Calculate total price from the real cart
+        const total = savedCart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+
+        // 4. Display the REAL data in the table
+        orderList.innerHTML = `
+            <tr>
+                <td>#${Math.floor(Math.random() * 10000)}</td>
+                <td>${itemNames}</td>
+                <td>₹${total}</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td><button class="btn-complete" onclick="clearOrder()">Mark Complete</button></td>
+            </tr>
+        `;
+    }
+
+    function clearOrder() {
+        if(confirm("Mark this order as completed? This will clear the cart.")) {
+            localStorage.removeItem('cart'); // Clears the data
+            location.reload(); // Refreshes the page
+        }
+    }
+
+    window.onload = loadAdminOrders;
+</script>
+</body>
+</html>

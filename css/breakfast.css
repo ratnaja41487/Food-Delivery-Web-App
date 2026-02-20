@@ -1,207 +1,76 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-  background: linear-gradient(to right, #fff7f0, #ffe5d9);
-  padding-bottom: 50px;
-}
-
-/* HEADER */
-.header {
-  width: 100%;
-  height: 60px;
-  position: relative;
-  padding: 10px 30px;
-}
-
-.logo img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-
-.cart-icon {
-  position: absolute;
-  right: 30px;
-  top: 18px;
-  font-size: 22px;
-  cursor: pointer;
-  width: 20px;
-
-}
-
-.cart-icon span {
-  background: red;
-  color: white;
-  font-size: 12px;
-  padding: 3px 7px;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  right: -12px;
-}
-
-/* TITLE */
-.title {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 36px;
-  color: #333;
-}
-
-/* SEARCH */
-.search-container {
-  width: 320px;
-  margin: 20px auto;
-  position: relative;
-}
-
-.search-icon {
-  position: absolute;
-  left: 10px;
-  top: 8px;
-  font-size: 16px;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 8px 10px 8px 30px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-/* MENU */
+/* The Grid Container: Manages gaps between items */
 .menu {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-top: 30px;
+    display: grid;
+    /* This creates a responsive grid that automatically adjusts the number of columns */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Perfect spacing between cards */
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* CARD */
+/* The Individual Card: Manages internal spacing and height */
 .menu-item {
-  width: 300px;
-  height: 395px;
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Flexbox creates the professional vertical layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 450px; /* Forces the taller white background seen in your screenshots */
 }
 
 .menu-item:hover {
-  transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
+/* Image Styling */
 .menu-item img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
 
+/* Item Title (e.g., Idly, Dosa) */
 .menu-item h3 {
-  margin-top: 10px;
-  font-size: 18px;
+    font-size: 22px;
+    color: #333;
+    margin: 10px 0 5px 0;
+    font-weight: 700;
 }
 
-.price {
-  font-weight: bold;
-  color: #e63946;
-  margin: 8px 0;
+/* PRICE STYLING: Placed perfectly below the name */
+.item-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e29578; /* Soft peach/orange theme color */
+    margin-bottom: 20px; /* Space before the button */
+    display: block;
 }
 
+/* Button Styling: Professional Rounded Look */
 .menu-item button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 20px;
-  background: #ff7f50;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+    background-color: #ff7f50; /* Primary orange from your design */
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 90%;
+    align-self: center; /* Centers the button horizontally */
+    transition: background 0.3s ease;
 }
 
 .menu-item button:hover {
-  background: #ff5722;
+    background-color: #e29578;
 }
-
-/* CART DROPDOWN */
-.cart-dropdown {
-  display: none;
-  position: absolute;
-  right: 30px;
-  top: 70px;
-  width: 220px;
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.cart-dropdown h4 {
-  margin-bottom: 10px;
-}
-
-.cart-dropdown ul {
-  list-style: none;
-}
-
-.cart-dropdown li {
-  padding: 5px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-}
-
-
-
-
-/* ===== ARROWS ===== */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 22px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
-
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.8);
-}
-
-/* ===== DOTS ===== */
-.dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-}
-
-.dots span {
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  display: inline-block;
-  background: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dots span.active {
-  background: #ff5722;
-}
-

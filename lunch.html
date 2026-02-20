@@ -28,34 +28,77 @@
       background: #d67a5c;
       transform: translateY(-2px);
     }
+<<<<<<< HEAD
+=======
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* Style for the price text */
+    .menu-item p {
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
+    }
+>>>>>>> Ratnaja
   </style>
 
   <script>
     function goHome() {
       window.location.href = "home.html";
     }
+<<<<<<< HEAD
+=======
+
+    // Updated logic to save name and price for the cart page
+    function addToCart(itemName, itemPrice) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name: itemName, price: itemPrice });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
+    }
+
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+
+    function searchFood() {
+      let input = document.getElementById('searchBar').value.toLowerCase();
+      let items = document.getElementsByClassName('menu-item');
+      for (let i = 0; i < items.length; i++) {
+        let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        items[i].style.display = title.includes(input) ? "" : "none";
+      }
+    }
+>>>>>>> Ratnaja
   </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
   </div>
 
-  <div class="cart-icon">
+  <div class="cart-icon" onclick="openCart()">
     🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
 <h1 class="title">Lunch Menu</h1>
 
-<!-- SEARCH BAR -->
 <div class="search-container">
   <span class="search-icon"></span>
-  <input type="text" id="searchBar" placeholder="Search food..." onkeyup="searchFood()">
+  <input type="text" id="searchBar" placeholder="Search lunch..." onkeyup="searchFood()">
 </div>
 
 <div class="menu">
@@ -63,42 +106,69 @@
   <div class="menu-item">
     <img src="assets/mutton-biryani.avif" alt="Mutton Biryani">
     <h3>Mutton Biryani</h3>
-    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+    <p>₹350</p>
+    <button onclick="addToCart('Mutton Biryani', 350)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/chicken-biryani.jpg" alt="Chicken Biryani">
     <h3>Chicken Biryani</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+=======
+    <p>₹280</p>
+    <button onclick="addToCart('Chicken Biryani', 280)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/butternon.jpg" alt="Butter Naan">
     <h3>Butter Naan</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+=======
+    <p>₹40</p>
+    <button onclick="addToCart('Butter Naan', 40)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/paneer-biryani.webp" alt="Paneer Biryani">
     <h3>Paneer Biryani</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+=======
+    <p>₹220</p>
+    <button onclick="addToCart('Paneer Biryani', 220)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/curd-rice.jpg" alt="Curd Rice">
     <h3>Curd Rice</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+=======
+    <p>₹80</p>
+    <button onclick="addToCart('Curd Rice', 80)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/sambarrice.jpg" alt="Sambar Rice">
     <h3>Sambar Rice</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+=======
+    <p>₹90</p>
+    <button onclick="addToCart('Sambar Rice', 90)">Add to Cart</button>
+>>>>>>> Ratnaja
   </div>
 
   <div class="menu-item">
     <img src="assets/corianderrice.jpg" alt="Coriander Rice">
     <h3>Coriander Rice</h3>
+<<<<<<< HEAD
     <button onclick="window.location.href='lunch.html'">Add to Cart</button>
   </div>
 
@@ -115,26 +185,53 @@
   </div>
 
   <div class="menu-item">
+=======
+    <p>₹100</p>
+    <button onclick="addToCart('Coriander Rice', 100)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/dalrice.webp" alt="Dal Rice">
+    <h3>Dal Rice</h3>
+    <p>₹90</p>
+    <button onclick="addToCart('Dal Rice', 90)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/Chicken-65.jpg" alt="Chicken 65">
+    <h3>Chicken 65</h3>
+    <p>₹180</p>
+    <button onclick="addToCart('Chicken 65', 180)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+>>>>>>> Ratnaja
     <img src="assets/veg-fried-rice.jpg" alt="Veg Fried Rice">
     <h3>Veg Fried Rice</h3>
-    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+    <p>₹150</p>
+    <button onclick="addToCart('Veg Fried Rice', 150)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/Chicken-Fried-Rice.jpg" alt="Chicken Fried Rice">
     <h3>Chicken Fried Rice</h3>
-    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+    <p>₹190</p>
+    <button onclick="addToCart('Chicken Fried Rice', 190)">Add to Cart</button>
   </div>
 
   <div class="menu-item">
     <img src="assets/veg-soup.jpg" alt="Veg Soup">
     <h3>Veg Soup</h3>
-    <button onclick="window.location.href='lunch.html'">Add to Cart</button>
+    <p>₹70</p>
+    <button onclick="addToCart('Veg Soup', 70)">Add to Cart</button>
   </div>
 
 </div>
 
+<<<<<<< HEAD
 <!-- BACK BUTTON -->
+=======
+>>>>>>> Ratnaja
 <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
 
 </body>

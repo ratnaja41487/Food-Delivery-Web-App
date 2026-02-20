@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafe Connect – Desserts Menu</title>
+  <link rel="stylesheet" href="css/home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Back Button Style */
+    .back-home-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #e29578;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #d67a5c;
+      transform: translateY(-2px);
+    }
+
+    .cart-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* Style for the price text */
+    .menu-item p {
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
+    }
+  </style>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html";
+    }
+
+    // Logic to save items and prices to localStorage
+    function addToCart(itemName, itemPrice) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name: itemName, price: itemPrice });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(itemName + " (₹" + itemPrice + ") added! Go to cart 🛒");
+    }
+
+    window.onload = function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").innerText = cart.length;
+    };
+
+    function openCart() {
+      window.location.href = "cart.html";
+    }
+
+    function searchFood() {
+      let input = document.getElementById('searchBar').value.toLowerCase();
+      let items = document.getElementsByClassName('menu-item');
+      for (let i = 0; i < items.length; i++) {
+        let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        items[i].style.display = title.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="assets/logocafeconnect.jpeg" alt="Cafe Logo">
+  </div>
+
+  <div class="cart-icon" onclick="openCart()">
+    🛒 <span id="cartCount">0</span>
+  </div>
+</header>
+
+<h1 class="title">Desserts Menu</h1>
+
+<div class="search-container">
+  <span class="search-icon"></span>
+  <input type="text" id="searchBar" placeholder="Search desserts..." onkeyup="searchFood()">
+</div>
+
+<div class="menu">
+
+  <div class="menu-item">
+    <img src="assets/cake.webp" alt="Cake">
+    <h3>Cake</h3>
+    <p>₹150</p>
+    <button onclick="addToCart('Cake', 150)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="Assets/cup-cake.webp" alt="Cup Cake">
+    <h3>Cup Cake</h3>
+    <p>₹80</p>
+    <button onclick="addToCart('Cup Cake', 80)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/ice-cream-cake.jpeg" alt="Ice Cream Cake">
+    <h3>Ice Cream Cake</h3>
+    <p>₹180</p>
+    <button onclick="addToCart('Ice Cream Cake', 180)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/croissant.avif" alt="Croissant">
+    <h3>Croissant</h3>
+    <p>₹120</p>
+    <button onclick="addToCart('Croissant', 120)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/cinnamon-roll.avif" alt="Cinnamon Roll">
+    <h3>Cinnamon Roll</h3>
+    <p>₹110</p>
+    <button onclick="addToCart('Cinnamon Roll', 110)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/Chocolate-Brownies.jpg" alt="Chocolate Brownies">
+    <h3>Chocolate Brownies</h3>
+    <p>₹140</p>
+    <button onclick="addToCart('Chocolate Brownies', 140)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/Apricot-dessert.jpg" alt="Apricot Dessert">
+    <h3>Apricot Dessert</h3>
+    <p>₹160</p>
+    <button onclick="addToCart('Apricot Dessert', 160)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/ice-cream.webp" alt="Ice Cream">
+    <h3>Ice Cream</h3>
+    <p>₹90</p>
+    <button onclick="addToCart('Ice Cream', 90)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/Donuts.jpg" alt="Donuts">
+    <h3>Donuts</h3>
+    <p>₹70</p>
+    <button onclick="addToCart('Donuts', 70)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/tiramisu.webp" alt="Tiramisu">
+    <h3>Tiramisu</h3>
+    <p>₹200</p>
+    <button onclick="addToCart('Tiramisu', 200)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/mini-apple-pies.jpg" alt="Mini Apple Pies">
+    <h3>Mini Apple Pies</h3>
+    <p>₹130</p>
+    <button onclick="addToCart('Mini Apple Pies', 130)">Add to Cart</button>
+  </div>
+
+  <div class="menu-item">
+    <img src="assets/waffles.jpeg" alt="Waffles">
+    <h3>Waffles</h3>
+    <p>₹170</p>
+    <button onclick="addToCart('Waffles', 170)">Add to Cart</button>
+  </div>
+
+</div>
+
+<button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+
+</body>
+</html>

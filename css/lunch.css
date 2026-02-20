@@ -205,3 +205,24 @@ body {
   background: #ff5722;
 }
 
+.back-home-btn {
+  position: fixed;
+  bottom: 40px;     /* little bit above bottom */
+  left: 30px;       /* left corner spacing */
+  padding: 14px 26px;  /* bigger size */
+  border: none;
+  border-radius: 30px;
+  background: #a72f04;  /* matches your peach theme */
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+  background: #d67a5c; /* darker peach on hover */
+  transform: translateY(-2px);
+}
+

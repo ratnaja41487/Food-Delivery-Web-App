@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #fff7f0, #ffe5d9);
+  padding-bottom: 50px;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  padding: 10px 30px;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cart-icon {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  width: 20px;
+
+}
+
+.cart-icon span {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 36px;
+  color: #333;
+}
+
+/* SEARCH */
+.search-container {
+  width: 320px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  font-size: 16px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px 10px 8px 30px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* CARD */
+.menu-item {
+  width: 300px;
+  height: 395px;
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.menu-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.menu-item h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.price {
+  font-weight: bold;
+  color: #e63946;
+  margin: 8px 0;
+}
+
+.menu-item button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #ff7f50;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-item button:hover {
+  background: #ff5722;
+}
+
+/* CART DROPDOWN */
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 70px;
+  width: 220px;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cart-dropdown h4 {
+  margin-bottom: 10px;
+}
+
+.cart-dropdown ul {
+  list-style: none;
+}
+
+.cart-dropdown li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+
+
+
+/* ===== ARROWS ===== */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* ===== DOTS ===== */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.dots span {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  display: inline-block;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dots span.active {
+  background: #ff5722;
+}
+
+.back-home-btn:hover {
+  background: #d67a5c; /* darker peach on hover */
+  transform: translateY(-2px);
+}

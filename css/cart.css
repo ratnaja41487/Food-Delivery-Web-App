@@ -1,0 +1,81 @@
+body {
+  background-color: #fdf2e9;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0; padding: 20px;
+}
+
+.title { text-align: center; color: #2d2d2d; margin-top: 40px; }
+
+.cart-container {
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-name { font-weight: 600; font-size: 1.1rem; }
+
+/* --- Plus Minus Controls --- */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.qty-btn {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.qty-btn:hover { background: #cd4210; color: white; border-color: #cd4210; }
+
+.qty-num { font-weight: bold; font-size: 1.1rem; color: #cd4210; }
+
+.item-price { font-weight: bold; font-size: 1.1rem; }
+
+.total-section {
+  text-align: right; margin-top: 25px;
+  font-size: 1.5rem; font-weight: bold; color: #cd4210;
+}
+
+.btn-area { display: flex; justify-content: space-between; margin-top: 25px; }
+
+.clear-btn, .order-btn {
+  padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+.order-btn { background: #cd4210; color: white; }
+
+/* Back Button Styles */
+.back-nav { text-align: center; margin-top: 20px; }
+.back-menu-btn {
+  background: transparent; color: #cd4210; border: 2px solid #cd4210;
+  padding: 10px 25px; border-radius: 50px; font-weight: bold; cursor: pointer;
+}
+.back-menu-btn:hover { background: #cd4210; color: white; }
