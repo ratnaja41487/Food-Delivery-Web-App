@@ -1,28 +1,38 @@
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", function(e) {
 
-  const email = document.getElementById("email").value.trim().toLowerCase();
-  const password = document.getElementById("password").value;
-  const error = document.getElementById("error");
+e.preventDefault();
 
-  error.textContent = "";
+let email = document.getElementById("email").value.trim().toLowerCase();
+let password = document.getElementById("password").value.trim();
+let errorMsg = document.getElementById("error");
 
-  const savedUser = JSON.parse(localStorage.getItem("user"));
+errorMsg.innerText = "";
 
-  // ❌ No account exists
-  if (!savedUser) {
-    error.textContent = "No account found. Please sign up first.";
-    error.style.color = "red";
-    return;
-  }
+// Check empty fields
+if(email === "" || password === ""){
+errorMsg.innerText = "Please enter email and password";
+return;
+}
 
-  // ❌ Email or password mismatch
-  if (email !== savedUser.email || password !== savedUser.password) {
-    error.textContent = "Invalid email or password";
-    error.style.color = "red";
-    return;
-  }
+// Admin Login
+if(email === "admin@gmail.com" && password === "admin123"){
+alert("Admin Login Successful");
+window.location.href = "admin.html";
+return;
+}
 
-  // ✅ Login success
-  window.location.href = "home.html";
+// Get registered users
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+// Check if user exists
+let validUser = users.find(user => user.email === email && user.password === password);
+
+if(validUser){
+alert("User Login Successful");
+window.location.href = "home.html";
+}
+else{
+errorMsg.innerText = "Invalid email or password";
+}
+
 });
