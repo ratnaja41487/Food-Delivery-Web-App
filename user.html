@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Users</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<div class="navbar">
+
+<h2>Cafe Connect</h2>
+
+<div class="nav-links">
+<a href="admin.html">Dashboard</a>
+<a href="manage-menu.html">Manage Menu</a>
+<a href="orders.html">Orders</a>
+<a href="users.html">Users</a>
+</div>
+
+</div>
+
+<h1 class="title">Users</h1>
+
+<div class="orders">
+
+<table>
+
+<thead>
+<tr>
+<th>User ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+</thead>
+
+<tbody id="userTable">
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let users = JSON.parse(localStorage.getItem("users")) || []
+
+let table = document.getElementById("userTable")
+
+users.forEach(function(user){
+
+let row = `
+<tr>
+<td>${user.id}</td>
+<td>${user.name}</td>
+<td>${user.email}</td>
+<td>${user.phone}</td>
+</tr>
+`
+
+table.innerHTML += row
+
+})
+
+</script>
+
+</body>
+
+</html>

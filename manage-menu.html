@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Manage Menu</title>
+<link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+<h1 style="text-align:center;">Manage Menu</h1>
+
+<div style="width:300px;margin:auto;">
+
+<input id="foodName" placeholder="Food Name"><br><br>
+
+<input id="foodPrice" placeholder="Food Price"><br><br>
+
+<button onclick="addFood()">Add Food</button>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+<a href="admin.html">⬅ Back to Dashboard</a>
+</div>
+
+
+<script>
+
+function addFood(){
+
+let name = document.getElementById("foodName").value;
+let price = document.getElementById("foodPrice").value;
+
+let food = {
+name:name,
+price:price
+};
+
+let menu = JSON.parse(localStorage.getItem("menu")) || [];
+
+menu.push(food);
+
+localStorage.setItem("menu", JSON.stringify(menu));
+
+alert("Food Added Successfully");
+
+}
+
+</script>
+
+</body>
+</html>
