@@ -1,0 +1,181 @@
+body{
+font-family: Arial;
+background:#f4f4f4;
+margin:0;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#222;
+color:white;
+padding:15px 40px;
+}
+
+.nav-links a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+}
+
+.logout{
+background:#ff5a4f;
+border:none;
+padding:8px 15px;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+.title{
+margin:30px;
+font-size:32px;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:20px;
+margin:20px;
+}
+
+.card{
+flex:1;
+padding:25px;
+border-radius:10px;
+color:white;
+}
+
+.card p{
+font-size:28px;
+font-weight:bold;
+}
+
+.orange{background:linear-gradient(45deg,#ff8a00,#ff5a4f);}
+.green{background:linear-gradient(45deg,#7a9e59,#5c8d4d);}
+.purple{background:linear-gradient(45deg,#8e7cc3,#6a5acd);}
+.red{background:linear-gradient(45deg,#ff7e67,#ff4d4d);}
+
+
+/* DASHBOARD GRID */
+
+.dashboard-container{
+display:grid;
+grid-template-columns:1fr;
+gap:30px;
+margin:20px;
+}
+
+
+/* ORDERS */
+
+.orders{
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+.orders-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align: left;
+}
+
+.pending{
+background:rgb(245, 198, 58);
+color:white;
+padding:5px 10px;
+border-radius:5px;
+}
+
+.delivered{
+background:rgb(166, 210, 171);
+color:white;
+padding:5px 10px;
+border-radius:5px;
+}
+
+.cancel{
+background:rgb(240, 155, 155);
+color:white;
+padding:5px 10px;
+border-radius:5px;
+}
+
+
+/* MENU */
+/* 
+.menu{
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:10px;
+} */
+/* 
+.food{
+position:relative;
+}
+
+.food img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.food p{
+position:absolute;
+bottom:5px;
+left:10px;
+color:white;
+font-weight:bold;
+}
+ */
+
+/* BUTTONS */
+
+.buttons{
+margin-top:15px;
+display:flex;
+gap:10px;
+}
+
+.add{
+background:#f3b46c;
+border:none;
+padding:10px 20px;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.view2{
+background:#8399f4;
+border:none;
+padding:10px 20px;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}

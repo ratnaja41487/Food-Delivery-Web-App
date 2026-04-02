@@ -1,0 +1,97 @@
+/* Background */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f7d9d9, #d7c0c0);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Container */
+.container {
+  background: #fff;
+  padding: 35px;
+  border-radius: 20px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+.container h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+.container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.container input:focus {
+  border-color: #ff5722;
+  box-shadow: 0 0 6px rgba(255,87,34,0.3);
+}
+
+/* Main Button */
+.container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #ff5722;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.container button:hover {
+  background: #e64a19;
+}
+
+/* Send OTP Button */
+.send-btn {
+  background: #ff7043;
+}
+
+.send-btn:hover {
+  background: #ff5722;
+}
+
+/* Message */
+#msg {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Back Link */
+a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: 1px solid #ff5722;
+  border-radius: 20px;
+  color: #ff5722;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  background: #ff5722;
+  color: white;
+}

@@ -1,0 +1,67 @@
+/* Background */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f7d9d9, #d7c0c0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Card */
+.box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+.box h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Button */
+.order-btn {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.order-btn:hover {
+  background: #e64a19;
+}
+
+/* Status */
+#orderStatus {
+  margin-top: 20px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 8px 18px;
+  border: 1px solid #ff5722;
+  border-radius: 20px;
+  color: #ff5722;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #ff5722;
+  color: white;
+}

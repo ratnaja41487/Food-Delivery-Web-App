@@ -1,0 +1,104 @@
+body{
+    font-family: "Times New Roman", Times, sans-serif;
+    padding:40px;
+    background: linear-gradient(to right,#fff7f0,#ffe5d9);
+    min-height:100vh;
+}
+body{
+    font-family:  serif;
+    background: linear-gradient(to right,#fff7f0,#ffe5d9);
+    padding:40px;
+}
+/* PAGE TITLE */
+h1{
+    font-size:36px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    text-decoration:none;
+    color:#ff7f50;
+    font-weight:900;
+    display:inline-block;
+    margin-bottom:25px;
+    padding:8px 15px;
+    border:2px solid #ff7f50;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#ff7f50;
+    color:white;
+}
+
+/* TABLE CONTAINER */
+.order-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+    margin-top:20px;
+}
+
+/* TABLE HEADER */
+.order-table th{
+    background:#ff7f50;
+    color:white;
+    padding:18px;
+    text-align:left;
+    text-transform:uppercase;
+    font-size:14px;
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+/* TABLE CELLS */
+.order-table td{
+    padding:15px 18px;
+    text-align:left;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+    color:#333;
+}
+
+/* ROW HOVER EFFECT */
+.order-table tbody tr:hover{
+    background-color:#fffaf8;
+}
+
+/* STATUS BADGE */
+.status-badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+/* PENDING */
+.status-pending{
+    background:#fff4e6;
+    color:#d35400;
+    border:1px solid #ffe8cc;
+}
+
+/* COMPLETED */
+.status-completed{
+    background:#e8f8f0;
+    color:#27ae60;
+    border:1px solid #d4f5e3;
+}
+
+/* EMPTY MESSAGE */
+#userOrderList:empty::after{
+    content:"No orders yet.";
+    display:block;
+    padding:20px;
+    color:#888;
+    font-style:italic;
+}
